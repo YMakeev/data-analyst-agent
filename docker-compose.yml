@@ -1,0 +1,37 @@
+# Postgres для воркшопу.
+#
+# Порт 5433, а не 5432 — щоб не конфліктувати з Postgres, який може вже
+# стояти на машині учасника. Це заощаджує найчастіше питання в чаті.
+#
+# Файли з ./db/init виконуються один раз при першому старті, в алфавітному
+# порядку: спершу схема з коментарями, потім read-only роль.
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: analyst-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: analytics
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+      - analyst-db-data:/var/lib/postgresql/data
+    healthcheck:
+      # Чекаємо не просто процес, а готовність приймати запити.
+      test: ["CMD-SHELL", "pg_isready -U postgres -d analytics"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    # Дані синтетичні й невеликі — тримаємо все в пам'яті, сідинг швидший.
+    command: >
+      postgres
+      -c fsync=off
+      -c synchronous_commit=off
+      -c full_page_writes=off
+      -c shared_buffers=256MB
+
+volumes:
+  analyst-db-data:

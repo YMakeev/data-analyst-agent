@@ -1,0 +1,38 @@
+[project]
+name = "ai-analyst-mcp"
+version = "0.1.0"
+description = "MCP-сервер, що дає Claude read-only доступ до бази даних. Воркшоп From Data to AI Engineer."
+readme = "README.md"
+requires-python = ">=3.10"
+
+# Верхні межі стоять свідомо: воркшоп не має зламатись через мажорний
+# реліз бібліотеки за день до нього. MCP SDK 2.x — актуальний API
+# (MCPServer; у 1.x він називався FastMCP).
+dependencies = [
+    "mcp>=2.2,<3",
+    "psycopg[binary,pool]>=3.2,<4",
+    "python-dotenv>=1.0,<2",
+    "scikit-learn>=1.4,<2",
+    "numpy>=1.26,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+ai-analyst = "server.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["server"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "db: тест потребує піднятої бази (docker compose up -d)",
+]

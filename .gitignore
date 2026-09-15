@@ -1,0 +1,18 @@
+# Оточення
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+
+# Дані і артефакти — генеруються, не комітяться
+ml/model.pkl
+reports/*.html
+
+# Службове
+.pytest_cache/
+.DS_Store
+*.egg-info/
+dist/
+build/
+uv.lock
