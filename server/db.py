@@ -246,8 +246,29 @@ def friendly_db_error(exc: Exception) -> str:
             f"датою або агрегацію, щоб він обробляв менше рядків."
         )
     if isinstance(exc, psycopg.OperationalError):
-        return (
-            "Немає з'єднання з базою. Перевір, що контейнер запущений: "
-            "docker compose up -d"
-        )
+        # Причини різні, і поради до них теж різні. Порада «підніми контейнер»
+        # у відповідь на невірний пароль веде діагностику зовсім не туди —
+        # особливо в хмарі, де ніякого контейнера з базою немає взагалі.
+        text = str(exc).strip()
+        low = text.lower()
+        if "password" in low or "authentication" in low or "role" in low:
+            hint = (
+                "База відповіла, але не пустила: невірний користувач або пароль. "
+                "Перевір DATABASE_URL — там має бути рядок ролі analyst_ro, "
+                "а не той, що хмара видала за замовчуванням."
+            )
+        elif "does not exist" in low and "database" in low:
+            hint = "Такої бази не існує. Перевір назву бази в кінці DATABASE_URL."
+        elif "ssl" in low:
+            hint = "Хмарні бази вимагають SSL. Додай ?sslmode=require в кінець DATABASE_URL."
+        elif "timeout" in low or "could not translate" in low or "could not connect" in low:
+            hint = (
+                "Сервер бази недосяжний: невірний хост або мережа не пускає. "
+                "Локально перевір, що контейнер піднятий: docker compose up -d"
+            )
+        else:
+            hint = "Не вдалось під'єднатись до бази."
+        # Оригінальний текст лишаємо: без нього діагностика перетворюється
+        # на вгадування, і це стосується і людини, і моделі.
+        return f"{hint} Відповідь бази: {text.splitlines()[0]}"
     return f"Помилка бази: {exc}"
