@@ -60,7 +60,7 @@ def main() -> int:
     # Пароль ролі може відрізнятись від дефолтного — підставляємо фактичний.
     roles_sql = roles_sql.replace("'analyst_ro_pwd'", f"'{RO_PASSWORD}'")
 
-    with psycopg.connect(args.dsn, autocommit=True) as conn:
+    with psycopg.connect(args.dsn, autocommit=True, prepare_threshold=None) as conn:
         db_name = conn.info.dbname
         roles_sql = roles_sql.replace("DATABASE analytics", f'DATABASE "{db_name}"')
 

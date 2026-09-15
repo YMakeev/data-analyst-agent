@@ -429,7 +429,7 @@ def main() -> int:
     gen.run()
 
     try:
-        with psycopg.connect(args.dsn) as conn:
+        with psycopg.connect(args.dsn, prepare_threshold=None) as conn:
             write(conn, gen)
     except psycopg.OperationalError as e:
         print(f"\nНе вдалось під'єднатись до бази: {e}", file=sys.stderr)
