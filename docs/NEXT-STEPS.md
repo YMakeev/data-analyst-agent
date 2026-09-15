@@ -98,7 +98,7 @@ COMMENT ON COLUMN orders.status IS
 
 Поки сервер живе на твоєму ноутбуці, ним користуєшся тільки ти.
 
-Покроково — у [deploy/railway.toml](../deploy/railway.toml). Коротко: Railway,
+Покроково — у [railway.toml](../railway.toml). Коротко: Railway,
 база в тому самому проєкті, змінні оточення, `Generate Domain`. Колега додає
 URL як конектор у Claude і нічого не ставить.
 
