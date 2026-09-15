@@ -122,5 +122,6 @@ make run      # запустити сервер вручну (для дебаг�
 - [docs/SETUP.md](docs/SETUP.md) — підготовка до воркшопу
 - [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) — якщо не підключається
 - [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md) — як перенести на свої дані
+- [docs/NEON.md](docs/NEON.md) — деплой із базою на Neon
 - [deploy/AUTH.md](deploy/AUTH.md) — авторизація перед тим, як вішати на
   справжню базу

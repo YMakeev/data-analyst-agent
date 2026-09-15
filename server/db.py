@@ -39,6 +39,15 @@ class SqlGuardError(Exception):
 
 
 def get_pool() -> ConnectionPool:
+    """Пул з'єднань із базою.
+
+    Налаштування розраховані на те, що база може бути не локальною.
+    Serverless-Postgres (Neon, Supabase, Aurora Serverless) присипляє
+    обчислення після кількох хвилин простою й закриває ідлові з'єднання —
+    а пауза в кілька хвилин посеред воркшопу неминуча, поки ведуча говорить.
+    Без check і max_idle пул віддав би мертве з'єднання, і перший запит
+    після паузи впав би з 'connection already closed'.
+    """
     global _pool
     if _pool is None:
         dsn = os.getenv("DATABASE_URL")
@@ -47,7 +56,32 @@ def get_pool() -> ConnectionPool:
                 "Не задано DATABASE_URL. Скопіюй .env.example у .env "
                 "(cp .env.example .env) і перезапусти Claude Desktop."
             )
-        _pool = ConnectionPool(dsn, min_size=1, max_size=4, open=True, timeout=10)
+        _pool = ConnectionPool(
+            dsn,
+            min_size=1,
+            max_size=4,
+            open=True,
+            timeout=15,
+            # Перевіряти з'єднання перед видачею. Коштує один SELECT 1,
+            # рятує від падіння після простою.
+            check=ConnectionPool.check_connection,
+            # Не тримати ідлові з'єднання довше, ніж їх терпить хмара.
+            max_idle=120.0,
+            kwargs={
+                # Прокинути мережеву проблему за 10 с, а не висіти хвилину.
+                "connect_timeout": 10,
+                # Вимкнути автоматичні prepared statements. Вони ламаються
+                # об pgbouncer у transaction mode, а саме він стоїть за
+                # pooler-ендпоінтами хмарних баз. Пул у нас свій, тож
+                # виграшу від них майже немає, а сюрприз був би дорогий.
+                "prepare_threshold": None,
+                # Помітити обрив каналу, а не чекати вічно на відповідь.
+                "keepalives": 1,
+                "keepalives_idle": 30,
+                "keepalives_interval": 10,
+                "keepalives_count": 3,
+            },
+        )
     return _pool
 
 
