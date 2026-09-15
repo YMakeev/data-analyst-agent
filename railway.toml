@@ -1,24 +1,38 @@
-# Конфіг Railway.
+# Конфіг Railway. Лежить у корені навмисно — саме тут Railway його шукає.
 #
-# Порядок дій у їхньому інтерфейсі:
-#   1. New Project → Deploy from GitHub repo → обери цей репозиторій
-#   2. New → Database → PostgreSQL (у тому самому проєкті)
-#   3. У сервісі → Variables:
-#        DATABASE_URL       = ${{Postgres.DATABASE_URL}}
-#        ADMIN_DATABASE_URL = ${{Postgres.DATABASE_URL}}
-#        MCP_TRANSPORT      = http
-#        SEED_ON_START      = 1     ← прибрати після першого успішного старту
-#   4. Settings → Networking → Generate Domain
+# Railway крутить MCP-сервер. База живе окремо, на Neon: див. docs/NEON.md.
 #
-# База живе в тому самому проєкті й спілкується з сервером по приватній
-# мережі — назовні вона не світить портом узагалі. Це та сама ідея, що й
-# read-only роль, тільки на рівні інфраструктури.
+# Порядок дій в інтерфейсі Railway:
 #
-# Якщо база не тут, а на Neon — кроки інші, бо керована база не виконує
-# db/init/*.sql сама і видає рядок із правами на все. Див. docs/NEON.md.
+#   1. New Project → Deploy from GitHub repo → обери цей репозиторій,
+#      гілка main. Railway прочитає цей файл і збере образ із deploy/Dockerfile.
 #
-# Посилання, яке потім віддається команді:
-#   https://<твій-домен>.up.railway.app/mcp
+#   2. Variables — рівно дві змінні:
+#        DATABASE_URL  = рядок підключення analyst_ro до Neon (з ?sslmode=require)
+#        MCP_TRANSPORT = http
+#
+#      ADMIN_DATABASE_URL НЕ додавай. Модель тренується самими запитами
+#      на читання, тож адмінський доступ у хмарі не потрібен ніде.
+#
+#      SEED_ON_START НЕ додавай, якщо дані вже залиті локальним seed.py.
+#      Інакше черговий рестарт перезапише базу.
+#
+#   3. Settings → Networking → Generate Domain.
+#
+#   4. Посилання для команди: https://<домен>.up.railway.app/mcp
+#
+# Перший старт триває довше за наступні: контейнер тренує churn-модель,
+# бо ml/model.pkl у git не зберігається. У логах це видно рядком
+# «Моделі немає, тренуюсь».
+#
+# ---------------------------------------------------------------------------
+# Якщо база потрібна прямо тут, а не на Neon: New → Database → PostgreSQL
+# у тому самому проєкті, тоді DATABASE_URL = ${{Postgres.DATABASE_URL}},
+# ADMIN_DATABASE_URL те саме, і SEED_ON_START=1 на перший запуск (прибрати
+# після). Врахуй: Railway видає рядок суперкористувача, тому спершу
+# db/bootstrap.py, і в DATABASE_URL має піти надрукований ним рядок
+# analyst_ro — інакше read-only захист перетвориться на декорацію.
+# ---------------------------------------------------------------------------
 
 [build]
 builder = "dockerfile"
