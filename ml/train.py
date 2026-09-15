@@ -87,7 +87,7 @@ def main() -> int:
           f"({dates[0]} … {dates[-1]}, крок {SNAPSHOT_STEP_DAYS} дн.)")
 
     try:
-        conn = psycopg.connect(dsn)
+        conn = psycopg.connect(dsn, prepare_threshold=None)
     except psycopg.OperationalError as exc:
         print(f"Немає з'єднання з базою: {exc}", file=sys.stderr)
         print("Підніми контейнер: docker compose up -d", file=sys.stderr)
