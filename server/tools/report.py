@@ -1,12 +1,15 @@
 """Збереження звіту на диск.
 
-Свідомо НЕ інструмент для побудови графіків. Claude і так малює візуалізації
-краще, ніж це зробив би наш тул із параметрами «тип, вісь X, вісь Y»: такий
-тул лише звужує широкий інтерфейс, який у моделі вже є.
+Зверни увагу, чого тут НЕ буде: інструмента для побудови графіків.
+
+Claude малює візуалізації краще, ніж це зробив би наш тул із параметрами
+«тип, вісь X, вісь Y»: такий тул лише звужує широкий інтерфейс, який у
+моделі вже є. Спершу ми попросимо графік без жодного інструмента — і
+переконаємось, що він з'явиться сам.
 
 Дірка, яку ми закриваємо, інша: артефакт живе в чаті. Колезі його не кинеш
-файлом і завтра не відкриєш. Тому модель малює, а сервер зберігає — і це весь
-поділ праці.
+файлом і завтра не відкриєш. Тому модель малює, а сервер зберігає — і це
+весь поділ праці.
 """
 
 from __future__ import annotations
@@ -41,28 +44,16 @@ def save_report(html: str, name: str) -> dict[str, Any]:
 
     Args:
         html: повний HTML-документ.
-        name: коротка назва латиницею, наприклад revenue-by-channel.
+        name: коротка назва, наприклад revenue-by-channel.
+
+    TODO (33-38 хв) — п'ятнадцять рядків:
+      1. перевірити, що прийшов не порожній HTML;
+      2. створити теку REPORTS_DIR, якщо її немає;
+      3. записати файл як <дата>-<slug>.html;
+      4. повернути шлях, розмір і людське повідомлення;
+      5. записати виклик у журнал.
+
+    Зверни увагу на крок 4: модель має отримати шлях, який можна показати
+    людині. Тул повертає не тільки дані, а й те, що з ними робити далі.
     """
-    if not html or "<" not in html:
-        msg = "Порожній або не-HTML вміст. Передай повний HTML-документ."
-        audit.log("save_report", query=name, status="error", error=msg)
-        return {"error": msg}
-
-    reports_dir = Path(os.getenv("REPORTS_DIR", "./reports")).resolve()
-    reports_dir.mkdir(parents=True, exist_ok=True)
-
-    path = reports_dir / f"{date.today().isoformat()}-{_slug(name)}.html"
-    try:
-        path.write_text(html, encoding="utf-8")
-    except OSError as exc:
-        msg = f"Не вдалось записати файл: {exc}"
-        audit.log("save_report", query=name, status="error", error=msg)
-        return {"error": msg}
-
-    size_kb = round(path.stat().st_size / 1024, 1)
-    audit.log("save_report", query=str(path), rows=1)
-    return {
-        "path": str(path),
-        "size_kb": size_kb,
-        "message": f"Звіт збережено: {path}. Відкрий файл у браузері.",
-    }
+    raise NotImplementedError("Пишемо на воркшопі, 33-38 хв")

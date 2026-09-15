@@ -28,30 +28,14 @@ def run_sql(query: str, limit: int = 0) -> dict[str, Any]:
         query: SQL-запит. Одна інструкція, без крапки з комою в середині.
         limit: максимум рядків у відповіді. 0 — взяти значення за
             замовчуванням із налаштувань сервера.
+
+    TODO (15-19 хв):
+      1. обмежити limit значенням SQL_MAX_ROWS із .env;
+      2. викликати run_select;
+      3. SqlGuardError і помилки бази перетворити на {"error": ...} —
+         НЕ давати винятку вилетіти нагору. Модель прочитає текст помилки
+         і виправиться, а на трейсбек вона нічого зробити не може;
+      4. записати в журнал і успіх, і помилку;
+      5. якщо truncated — додати пояснення в полі "note".
     """
-    max_rows = int(os.getenv("SQL_MAX_ROWS", "1000"))
-    limit = max_rows if limit <= 0 else min(limit, max_rows)
-
-    try:
-        result = run_select(query, limit)
-    except SqlGuardError as exc:
-        audit.log("run_sql", query=query, status="error", error=str(exc))
-        return {"error": str(exc)}
-    except Exception as exc:  # noqa: BLE001
-        msg = friendly_db_error(exc)
-        audit.log("run_sql", query=query, status="error", error=msg)
-        return {"error": msg}
-
-    audit.log(
-        "run_sql",
-        query=query,
-        rows=result["row_count"],
-        duration_ms=result["duration_ms"],
-    )
-
-    if result["truncated"]:
-        result["note"] = (
-            f"Показано перші {limit} рядків, у результаті їх більше. "
-            f"Для точної відповіді порахуй агрегат у самому SQL."
-        )
-    return result
+    raise NotImplementedError("Пишемо на воркшопі, 15-19 хв")

@@ -1,6 +1,9 @@
 """Доступ до бази і захист SQL.
 
-Два рівні захисту, і важливо розуміти, що вони різні за призначенням.
+Каркас. Дві функції пишемо разом на воркшопі.
+
+Про захист варто розуміти головне ще до того, як почнемо писати код.
+Тут буде ДВА рівні, і вони різні за призначенням:
 
 1. Guard у цьому файлі — ЗРУЧНІСТЬ. Він ловить очевидно шкідливий запит
    і повертає моделі зрозумілу помилку замість сирого винятку Postgres.
@@ -9,8 +12,7 @@
 2. Права ролі analyst_ro у db/init/02_roles.sql — ЗАХИСТ. Права на запис
    просто немає, тому навіть запит, що проліз повз guard, нічого не зробить.
 
-Плюс кожен запит виконується в READ ONLY транзакції з таймаутом — третій
-шар, який діє, навіть якщо перші два переписали.
+Побачити другий рівень на власні очі:  python scripts/prove_readonly.py
 """
 
 from __future__ import annotations
@@ -39,16 +41,14 @@ class SqlGuardError(Exception):
 
 
 def get_pool() -> ConnectionPool:
-    global _pool
-    if _pool is None:
-        dsn = os.getenv("DATABASE_URL")
-        if not dsn:
-            raise RuntimeError(
-                "Не задано DATABASE_URL. Скопіюй .env.example у .env "
-                "(cp .env.example .env) і перезапусти Claude Desktop."
-            )
-        _pool = ConnectionPool(dsn, min_size=1, max_size=4, open=True, timeout=10)
-    return _pool
+    """Пул з'єднань із базою.
+
+    TODO (8-12 хв): взяти DSN зі змінної DATABASE_URL і створити
+    ConnectionPool. Якщо змінної немає — кинути зрозумілу помилку:
+    учасник має дізнатись, що треба зробити `cp .env.example .env`,
+    а не побачити KeyError.
+    """
+    raise NotImplementedError("Пишемо на воркшопі, 8-12 хв")
 
 
 # ------------------------------------------------------------------ guard --
@@ -82,42 +82,21 @@ def _strip_noise(sql: str) -> str:
 
 
 def check_query(sql: str) -> str:
-    """Перевіряє запит і повертає його очищений від хвостової крапки з комою.
+    """Перевіряє запит і повертає його без хвостової крапки з комою.
 
-    Кидає SqlGuardError з текстом, написаним для моделі: помилка має
-    пояснювати, ЩО зробити інакше, а не просто констатувати відмову.
+    TODO (20-24 хв). Що має відбутись:
+      1. порожній запит — відмова;
+      2. після _strip_noise у запиті не лишилось ";" (одна інструкція);
+      3. запит починається з SELECT або WITH;
+      4. немає жодного слова зі списку FORBIDDEN (як ЦІЛОГО слова).
+
+    Текст помилки пиши для моделі, а не для логів: він має пояснювати,
+    ЩО зробити інакше. Модель уміє виправлятись — якщо їй сказати, як.
+
+    Що саме має відбиватись і що точно НЕ має — у tests/test_sql_guard.py.
+    Це найзручніша специфікація: запусти `make test` і дивись, що червоне.
     """
-    if not sql or not sql.strip():
-        raise SqlGuardError("Порожній запит.")
-
-    probe = _strip_noise(sql).strip().rstrip(";").strip()
-    if not probe:
-        raise SqlGuardError("У запиті немає нічого, крім коментарів.")
-
-    if ";" in probe:
-        raise SqlGuardError(
-            "Кілька SQL-інструкцій в одному виклику заборонено. "
-            "Виконай їх окремими викликами run_sql."
-        )
-
-    head = probe.split(None, 1)[0].lower()
-    if head not in ("select", "with"):
-        raise SqlGuardError(
-            f"Дозволені лише запити на читання: SELECT або WITH. "
-            f"Отримано '{head.upper()}'. Ця база підключена в режимі "
-            f"тільки для читання."
-        )
-
-    lowered = probe.lower()
-    for word in FORBIDDEN:
-        if re.search(rf"\b{word}\b", lowered):
-            raise SqlGuardError(
-                f"У запиті є заборонене слово '{word.upper()}'. "
-                f"Доступ до бази — тільки на читання: змінювати дані, "
-                f"схему або права не можна. Перепиши запит як SELECT."
-            )
-
-    return sql.strip().rstrip(";").strip()
+    raise NotImplementedError("Пишемо на воркшопі, 20-24 хв")
 
 
 # ----------------------------------------------------------- серіалізація --
@@ -140,44 +119,27 @@ def jsonable(value: Any) -> Any:
 def run_select(sql: str, limit: int) -> dict[str, Any]:
     """Виконує перевірений SELECT у READ ONLY транзакції з таймаутом.
 
-    Ліміт накладається обгорткою, а не дописуванням LIMIT у кінець: так він
-    працює і для запитів, які вже мають власний LIMIT чи ORDER BY.
-    Запитуємо на один рядок більше, ніж треба, — щоб чесно сказати моделі,
-    що результат обрізано.
+    TODO (15-19 хв). Порядок дій:
+      1. check_query(sql)  — поки не написаний, на цьому кроці впаде;
+      2. обгорнути запит:  SELECT * FROM ( <запит> ) AS _q LIMIT n+1
+         Чому обгортка, а не дописування LIMIT у кінець: так ліміт працює
+         і для запитів, які вже мають власний LIMIT або ORDER BY.
+         Чому n+1: щоб чесно сказати моделі, що результат обрізано.
+      3. виконати в транзакції з SET TRANSACTION READ ONLY
+         і SET LOCAL statement_timeout;
+      4. повернути columns, rows, row_count, truncated, duration_ms.
     """
-    clean = check_query(sql)
-    timeout = int(os.getenv("SQL_TIMEOUT_SECONDS", "15"))
-    wrapped = f"SELECT * FROM (\n{clean}\n) AS _q LIMIT {limit + 1}"
-
-    started = time.perf_counter()
-    with get_pool().connection() as conn:
-        with conn.transaction():
-            conn.execute("SET TRANSACTION READ ONLY")
-            conn.execute(f"SET LOCAL statement_timeout = '{timeout}s'")
-            with conn.cursor(row_factory=dict_row) as cur:
-                cur.execute(wrapped)
-                rows = cur.fetchall()
-                columns = [d.name for d in cur.description] if cur.description else []
-
-    duration_ms = int((time.perf_counter() - started) * 1000)
-    truncated = len(rows) > limit
-    rows = rows[:limit]
-
-    return {
-        "columns": columns,
-        "rows": [jsonable(r) for r in rows],
-        "row_count": len(rows),
-        "truncated": truncated,
-        "duration_ms": duration_ms,
-    }
+    raise NotImplementedError("Пишемо на воркшопі, 15-19 хв")
 
 
 def fetch(sql: str, params: tuple = ()) -> list[dict[str, Any]]:
-    """Службовий запит самого сервера (схема, метадані). Guard не потрібен."""
-    with get_pool().connection() as conn:
-        with conn.cursor(row_factory=dict_row) as cur:
-            cur.execute(sql, params)
-            return [jsonable(r) for r in cur.fetchall()]
+    """Службовий запит самого сервера (схема, метадані). Guard не потрібен.
+
+    TODO (8-12 хв): взяти з'єднання з пулу, виконати запит із
+    row_factory=dict_row і повернути список словників, пропущений
+    через jsonable().
+    """
+    raise NotImplementedError("Пишемо на воркшопі, 8-12 хв")
 
 
 def friendly_db_error(exc: Exception) -> str:

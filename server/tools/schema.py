@@ -1,7 +1,10 @@
 """Інструменти, які показують моделі, що взагалі є в базі.
 
-Тут живе головна ідея блоку про дані: Claude не треба вчити SQL — його треба
-навчити ВАШОЇ схеми. Коментарі до колонок з db/init/01_schema.sql віддаються
+Каркас. SQL до системних таблиць уже написаний — набирати його в кадрі
+було б марною тратою хвилин. Пишемо самі інструменти.
+
+Головна ідея цього блоку: Claude не треба вчити SQL — його треба навчити
+ВАШОЇ схеми. Коментарі до колонок з db/init/01_schema.sql віддаються моделі
 дослівно, і саме вони перетворюють правдоподібну відповідь на правильну.
 """
 
@@ -53,30 +56,19 @@ def list_tables() -> dict[str, Any]:
     Виклич це першим, коли питання стосується даних: без назв таблиць
     будь-який SQL буде вгадуванням. Опис таблиці пояснює, що в ній лежить.
     Точну структуру колонок дає describe_table.
+
+    TODO (8-12 хв):
+      1. виконати _TABLES_SQL;
+      2. для кожної таблиці взяти точну кількість рядків через COUNT(*)
+         (reltuples — лише оцінка планувальника, різниця у відсотках
+         плутає і модель, і людину);
+      3. повернути список {table, rows, description};
+      4. записати виклик у журнал: audit.log("list_tables", rows=...).
+
+    Спробуй спершу написати докстрінг так: '''Список таблиць.''' — і
+    подивись, як зміниться поведінка Claude. Докстрінг і є промпт.
     """
-    try:
-        tables = fetch(_TABLES_SQL)
-    except Exception as exc:  # noqa: BLE001
-        audit.log("list_tables", status="error", error=str(exc))
-        return {"error": friendly_db_error(exc)}
-
-    out = []
-    for t in tables:
-        # reltuples — оцінка планувальника; для рядків беремо точне число,
-        # бо різниця в кілька відсотків плутає і модель, і людину.
-        exact = fetch(f'SELECT COUNT(*) AS n FROM "{t["table_name"]}"')[0]["n"]
-        out.append({
-            "table": t["table_name"],
-            "rows": exact,
-            "description": t["description"] or "",
-        })
-
-    audit.log("list_tables", rows=len(out))
-    return {
-        "tables": out,
-        "hint": "Далі виклич describe_table для тих таблиць, які потрібні "
-                "для відповіді — там описані особливості колонок.",
-    }
+    raise NotImplementedError("Пишемо на воркшопі, 8-12 хв")
 
 
 def describe_table(table: str) -> dict[str, Any]:
@@ -89,38 +81,12 @@ def describe_table(table: str) -> dict[str, Any]:
 
     Args:
         table: назва таблиці зі списку list_tables.
+
+    TODO (15-19 хв):
+      1. перевірити, що така таблиця існує (_known_tables). Якщо ні —
+         повернути помилку зі СПИСКОМ наявних: модель тоді виправиться
+         сама, без участі людини;
+      2. зібрати _COLUMNS_SQL, _FK_SQL і три приклади рядків;
+      3. повернути table, description, columns, foreign_keys, sample_rows.
     """
-    known = _known_tables()
-    if table not in known:
-        msg = f"Таблиці '{table}' не існує. Доступні: {', '.join(known)}."
-        audit.log("describe_table", query=table, status="error", error=msg)
-        return {"error": msg}
-
-    try:
-        columns = fetch(_COLUMNS_SQL, (table,))
-        fks = fetch(_FK_SQL, (table,))
-        sample = fetch(f'SELECT * FROM "{table}" LIMIT 3')
-        table_desc = next(
-            (t["description"] for t in fetch(_TABLES_SQL) if t["table_name"] == table),
-            None,
-        )
-    except Exception as exc:  # noqa: BLE001
-        audit.log("describe_table", query=table, status="error", error=str(exc))
-        return {"error": friendly_db_error(exc)}
-
-    audit.log("describe_table", query=table, rows=len(columns))
-    return {
-        "table": table,
-        "description": table_desc or "",
-        "columns": [
-            {
-                "name": c["column_name"],
-                "type": c["data_type"],
-                "nullable": c["nullable"],
-                "description": c["description"] or "",
-            }
-            for c in columns
-        ],
-        "foreign_keys": [f["definition"] for f in fks],
-        "sample_rows": sample,
-    }
+    raise NotImplementedError("Пишемо на воркшопі, 15-19 хв")
