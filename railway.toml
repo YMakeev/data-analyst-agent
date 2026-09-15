@@ -1,0 +1,43 @@
+# Конфіг Railway. Лежить у корені навмисно — саме тут Railway його шукає.
+#
+# Railway крутить MCP-сервер. База живе окремо, на Neon: див. docs/NEON.md.
+#
+# Порядок дій в інтерфейсі Railway:
+#
+#   1. New Project → Deploy from GitHub repo → обери цей репозиторій,
+#      гілка main. Railway прочитає цей файл і збере образ із deploy/Dockerfile.
+#
+#   2. Variables — рівно дві змінні:
+#        DATABASE_URL  = рядок підключення analyst_ro до Neon (з ?sslmode=require)
+#        MCP_TRANSPORT = http
+#
+#      ADMIN_DATABASE_URL НЕ додавай. Модель тренується самими запитами
+#      на читання, тож адмінський доступ у хмарі не потрібен ніде.
+#
+#      SEED_ON_START НЕ додавай, якщо дані вже залиті локальним seed.py.
+#      Інакше черговий рестарт перезапише базу.
+#
+#   3. Settings → Networking → Generate Domain.
+#
+#   4. Посилання для команди: https://<домен>.up.railway.app/mcp
+#
+# Перший старт триває довше за наступні: контейнер тренує churn-модель,
+# бо ml/model.pkl у git не зберігається. У логах це видно рядком
+# «Моделі немає, тренуюсь».
+#
+# ---------------------------------------------------------------------------
+# Якщо база потрібна прямо тут, а не на Neon: New → Database → PostgreSQL
+# у тому самому проєкті, тоді DATABASE_URL = ${{Postgres.DATABASE_URL}},
+# ADMIN_DATABASE_URL те саме, і SEED_ON_START=1 на перший запуск (прибрати
+# після). Врахуй: Railway видає рядок суперкористувача, тому спершу
+# db/bootstrap.py, і в DATABASE_URL має піти надрукований ним рядок
+# analyst_ro — інакше read-only захист перетвориться на декорацію.
+# ---------------------------------------------------------------------------
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "deploy/Dockerfile"
+
+[deploy]
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
