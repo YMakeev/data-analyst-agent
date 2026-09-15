@@ -30,9 +30,15 @@ def _load() -> dict[str, Any]:
     global _bundle
     if _bundle is None:
         if not MODEL_PATH.exists():
-            raise FileNotFoundError(
-                f"Модель не знайдено ({MODEL_PATH}). Натренуй її: make train"
-            )
+            # Локально й у хмарі лікується по-різному, тому кажемо обидва
+            # варіанти: порада «зроби make train» усередині контейнера,
+            # куди ніхто не зайде терміналом, марна.
+            where = "локально" if os.getenv("MCP_TRANSPORT", "stdio") == "stdio" else "у хмарі"
+            fix = ("Натренуй її: make train" if where == "локально" else
+                   "Перезапусти сервіс — модель тренується на старті. "
+                   "Якщо не допомогло, шукай у логах причину, чому тренування "
+                   "не пройшло минулого разу.")
+            raise FileNotFoundError(f"Модель не знайдено ({MODEL_PATH}). {fix}")
         with MODEL_PATH.open("rb") as fh:
             _bundle = pickle.load(fh)
     return _bundle
