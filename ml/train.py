@@ -76,8 +76,14 @@ def collect(conn: psycopg.Connection, as_of: date) -> tuple[np.ndarray, np.ndarr
 
 def main() -> int:
     load_dotenv()
-    dsn = os.getenv("ADMIN_DATABASE_URL") or os.getenv("DATABASE_URL")
-    if not dsn:
+    # Пробуємо кілька джерел по черзі, а не беремо перше-ліпше.
+    # Реальний випадок: у змінних хмари лишився ADMIN_DATABASE_URL з локальним
+    # localhost:5433 — і тренування ломилось у неіснуючу базу, хоча поруч
+    # лежав робочий DATABASE_URL. Тренуванню вистачає прав на читання, тож
+    # будь-який із цих рядків підходить.
+    candidates = [(n, os.getenv(n)) for n in ("ADMIN_DATABASE_URL", "DATABASE_URL")]
+    candidates = [(n, v) for n, v in candidates if v]
+    if not candidates:
         print("Немає DSN. Скопіюй .env.example у .env.", file=sys.stderr)
         return 1
 
@@ -86,11 +92,20 @@ def main() -> int:
     print(f"==> Історичних зрізів: {len(dates)} "
           f"({dates[0]} … {dates[-1]}, крок {SNAPSHOT_STEP_DAYS} дн.)")
 
-    try:
-        conn = psycopg.connect(dsn, prepare_threshold=None)
-    except psycopg.OperationalError as exc:
-        print(f"Немає з'єднання з базою: {exc}", file=sys.stderr)
-        print("Підніми контейнер: docker compose up -d", file=sys.stderr)
+    conn = None
+    for name, dsn in candidates:
+        try:
+            conn = psycopg.connect(dsn, connect_timeout=15, prepare_threshold=None)
+            print(f"    підключення через {name}")
+            break
+        except psycopg.OperationalError as exc:
+            first = str(exc).strip().splitlines()[0]
+            print(f"    {name}: не вдалось — {first}", file=sys.stderr)
+    if conn is None:
+        print("\nЖодне з підключень не спрацювало.", file=sys.stderr)
+        print("Локально: підніми базу — docker compose up -d", file=sys.stderr)
+        print("У хмарі: перевір DATABASE_URL і прибери зайвий "
+              "ADMIN_DATABASE_URL, якщо він указує на localhost.", file=sys.stderr)
         return 1
 
     blocks: list[tuple[date, np.ndarray, np.ndarray]] = []
