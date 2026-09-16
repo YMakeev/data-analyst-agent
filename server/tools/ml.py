@@ -31,7 +31,9 @@ def _load() -> dict[str, Any]:
     if _bundle is None:
         if not MODEL_PATH.exists():
             raise FileNotFoundError(
-                f"Модель не знайдено ({MODEL_PATH}). Натренуй її: make train"
+                f"Модель не знайдено ({MODEL_PATH}). Її треба натренувати "
+                f"заздалегідь окремою командою: make train. Сервер навчанням "
+                f"не займається — він лише використовує готову модель."
             )
         with MODEL_PATH.open("rb") as fh:
             _bundle = pickle.load(fh)

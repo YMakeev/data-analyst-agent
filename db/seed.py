@@ -1,8 +1,8 @@
 """Генератор синтетичних даних для воркшопу.
 
-Дані в git не комітяться — комітиться цей скрипт. Random seed зафіксований,
-тому в усіх учасників база збігається до останнього рядка: однакові дані
-означають однакові відповіді Claude, а отже передбачуване демо.
+Дані в git не зберігаються — зберігається цей скрипт. Початкове значення
+генератора випадкових чисел зафіксоване, тому база виходить однаковою в усіх,
+хто його запустить, до останнього рядка.
 
 Часові рамки рахуються відносно --as-of (дефолт: сьогодні), тож дані
 завжди виглядають свіжими, коли б воркшоп не повторювали.
@@ -199,8 +199,8 @@ class Generator:
                 if planned_end >= self.as_of:
                     # Підписка ще триває на дату зрізу.
                     ended_at, status, reason = None, "active", None
-                    # Частина активних уже котиться до виходу — саме їх
-                    # predict_churn має підсвітити на демо.
+                    # Частина активних учнів уже прямує до виходу. Саме їх
+                    # і має знаходити модель ризику відтоку.
                     will_churn = (not is_test) and self.rng.random() < 0.14
                     churn_at = self.as_of + timedelta(days=self.rng.randint(3, 30)) if will_churn else None
                 else:
@@ -410,7 +410,7 @@ def write(conn: psycopg.Connection, gen: Generator) -> None:
 
 def main() -> int:
     load_dotenv()
-    p = argparse.ArgumentParser(description="Згенерувати демо-базу для воркшопу")
+    p = argparse.ArgumentParser(description="Заповнити базу синтетичними даними")
     p.add_argument("--dsn", default=os.getenv("ADMIN_DATABASE_URL"),
                    help="Куди заливати. Дефолт — ADMIN_DATABASE_URL з .env")
     p.add_argument("--as-of", default=date.today().isoformat(),
