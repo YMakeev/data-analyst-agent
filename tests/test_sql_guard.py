@@ -98,3 +98,27 @@ def test_connection_error_hints_are_specific() -> None:
         assert expected in msg, f"для «{raw[:40]}…» очікували підказку про {expected}"
         # Оригінал бази має лишатись: без нього діагностика — вгадування.
         assert raw.split(",")[0][:25] in msg
+
+
+def test_model_records_library_versions() -> None:
+    """Модель має нести всередині версії, якими її навчали.
+
+    Файл моделі читається лише тими самими бібліотеками, якими створений.
+    Без записаних версій розбіжність проявилась би не зрозумілою помилкою,
+    а мовчазним збоєм у момент використання.
+    """
+    import pickle
+    from pathlib import Path
+
+    import pytest
+
+    model = Path(__file__).resolve().parent.parent / "ml" / "model.pkl"
+    if not model.exists():
+        pytest.skip("Модель ще не натренована: make train")
+
+    with model.open("rb") as fh:
+        bundle = pickle.load(fh)
+
+    assert "versions" in bundle, "у моделі не записані версії бібліотек"
+    assert {"scikit-learn", "numpy"} <= set(bundle["versions"])
+    assert bundle["roc_auc"] >= 0.70, "у поставку потрапила модель нижче порогу"

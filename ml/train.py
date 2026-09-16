@@ -50,6 +50,14 @@ from server.features import FEATURE_COLUMNS, FEATURE_SQL, LABEL_SQL  # noqa: E40
 
 MODEL_PATH = Path(__file__).resolve().parent / "model.pkl"
 
+
+def _version(lib: str) -> str:
+    from importlib.metadata import version
+    try:
+        return version(lib)
+    except Exception:  # noqa: BLE001
+        return "невідомо"
+
 # Зрізи беремо раз на три тижні. Частіше немає сенсу: сусідні дати дають
 # майже однакові рядки, і модель просто кілька разів вчить одне й те саме.
 SNAPSHOT_STEP_DAYS = 21
@@ -213,6 +221,10 @@ def main() -> int:
         "features": FEATURE_COLUMNS,
         "roc_auc": round(auc, 3),
         "trained_at": today.isoformat(),
+        # Версії бібліотек, якими створено файл. Модель — це файл ПЛЮС
+        # оточення: якщо читати її іншими версіями, вона або не прочитається,
+        # або тихо почне рахувати інакше. Хай розбіжність буде видно одразу.
+        "versions": {lib: _version(lib) for lib in ("scikit-learn", "numpy", "scipy")},
         "importances": importances,
         "medians": medians,
         "spread": spread,

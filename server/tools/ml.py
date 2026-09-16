@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import os
 import pickle
+import sys
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -27,6 +28,14 @@ _bundle: dict[str, Any] | None = None
 
 
 def _load() -> dict[str, Any]:
+    """Завантажує натреновану модель з файлу.
+
+    Модель — це не лише файл, а файл разом із версіями бібліотек, якими його
+    створили. Якщо навчання й робота відбуваються в різних оточеннях, файл
+    може не прочитатись або, гірше, прочитатись неправильно. Тому версії
+    записані всередину, і розбіжність видно одразу, а не у вигляді дивних
+    передбачень.
+    """
     global _bundle
     if _bundle is None:
         if not MODEL_PATH.exists():
@@ -35,9 +44,35 @@ def _load() -> dict[str, Any]:
                 f"заздалегідь окремою командою: make train. Сервер навчанням "
                 f"не займається — він лише використовує готову модель."
             )
-        with MODEL_PATH.open("rb") as fh:
-            _bundle = pickle.load(fh)
+        try:
+            with MODEL_PATH.open("rb") as fh:
+                _bundle = pickle.load(fh)
+        except Exception as exc:
+            raise RuntimeError(
+                f"Файл моделі не читається ({type(exc).__name__}: {exc}). "
+                f"Найчастіша причина — модель навчали в одному оточенні, а "
+                f"читають в іншому. Перетренуй її тим самим набором "
+                f"бібліотек: make train"
+            ) from exc
+
+        trained_with = _bundle.get("versions") or {}
+        mismatch = [
+            f"{lib}: навчали на {want}, тут {_installed(lib)}"
+            for lib, want in trained_with.items()
+            if _installed(lib) != want
+        ]
+        if mismatch:
+            print("[ml] увага, версії бібліотек розійшлися: " + "; ".join(mismatch),
+                  file=sys.stderr)
     return _bundle
+
+
+def _installed(lib: str) -> str:
+    try:
+        from importlib.metadata import version
+        return version(lib)
+    except Exception:  # noqa: BLE001
+        return "невідомо"
 
 
 def _explain(row: dict[str, Any], bundle: dict[str, Any], top_n: int = 3) -> list[str]:
@@ -83,9 +118,11 @@ def predict_churn(student_ids: list[int] | None = None, top_n: int = 20) -> dict
     """
     from server.features import FEATURE_SQL  # локально: sklearn тягнеться довго
 
+    # Ловимо будь-яку помилку, а не лише очікувану: інструмент, який падає
+    # без пояснення, неможливо полагодити ні людині, ні моделі.
     try:
         bundle = _load()
-    except FileNotFoundError as exc:
+    except Exception as exc:  # noqa: BLE001
         audit.log("predict_churn", status="error", error=str(exc))
         return {"error": str(exc)}
 
@@ -111,18 +148,24 @@ def predict_churn(student_ids: list[int] | None = None, top_n: int = 20) -> dict
             "note": "Активних підписок під ці умови не знайдено.",
         }
 
-    model = bundle["model"]
-    matrix = [[float(r[c]) for c in FEATURE_COLUMNS] for r in rows]
-    probs = model.predict_proba(matrix)[:, 1]
-
-    scored = [
-        {
-            "student_id": r["student_id"],
-            "churn_probability": round(float(p), 3),
-            "top_factors": _explain(r, bundle),
-        }
-        for r, p in zip(rows, probs)
-    ]
+    try:
+        model = bundle["model"]
+        matrix = [[float(r[c]) for c in FEATURE_COLUMNS] for r in rows]
+        probs = model.predict_proba(matrix)[:, 1]
+        scored = [
+            {
+                "student_id": r["student_id"],
+                "churn_probability": round(float(p), 3),
+                "top_factors": _explain(r, bundle),
+            }
+            for r, p in zip(rows, probs)
+        ]
+    except Exception as exc:  # noqa: BLE001
+        msg = (f"Модель не змогла оцінити дані ({type(exc).__name__}: {exc}). "
+               f"Найімовірніше, набір ознак у базі розійшовся з тим, на якому "
+               f"модель навчали. Перетренуй її: make train")
+        audit.log("predict_churn", status="error", error=msg)
+        return {"error": msg}
     scored.sort(key=lambda x: x["churn_probability"], reverse=True)
     if not student_ids:
         scored = scored[:top_n]
