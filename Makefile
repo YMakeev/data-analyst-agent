@@ -7,12 +7,14 @@ PY := $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; \
        else echo python3; fi)
 ROOT := $(shell pwd)
 
-.PHONY: help setup up down seed train run test config reset check
+.PHONY: help setup up down seed train run test config reset check doctor
 
 help:
-	@echo "make setup   — повний сетап: база + залежності + дані + модель"
-	@echo "make config  — показати JSON для Claude Desktop (з правильними шляхами)"
-	@echo "make run     — запустити MCP-сервер вручну (для дебагу)"
+	@echo "make doctor  — перевірити, чи все готове до роботи"
+	@echo "make config  — показати налаштування для Claude Desktop"
+	@echo "make setup   — підняти свою базу в Docker і підготувати все з нуля"
+	@echo "make train   — натренувати модель ризику відтоку"
+	@echo "make run     — запустити сервер вручну, щоб побачити помилки"
 	@echo "make test    — прогнати тести"
 	@echo "make reset   — знести базу і зібрати заново"
 
@@ -54,8 +56,12 @@ run:
 test:
 	@$(PY) -m pytest -q
 
-# Друкує готовий блок для claude_desktop_config.json з абсолютними шляхами.
-# Без цього половина залу воює зі шляхами замість того, щоб слухати.
+# Перевіряє оточення, базу й модель і пояснює, що саме не так.
+doctor:
+	@$(PY) scripts/doctor.py
+
+# Друкує готові налаштування для Claude Desktop з абсолютними шляхами
+# саме цього комп'ютера — щоб не писати їх руками й не помилятись.
 config:
 	@$(PY) scripts/print_config.py
 

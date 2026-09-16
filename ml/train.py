@@ -1,23 +1,37 @@
-"""Тренування churn-моделі.
+"""Тренування моделі, яка оцінює ризик відтоку учня.
 
-Запускається один раз при сетапі (make train) і кладе ml/model.pkl.
-Модель у git не комітиться — вона відтворюється з даних за кілька секунд.
+Запусти один раз перед роботою:
 
-Два рішення тут важливіші за вибір алгоритму, і на воркшопі варто назвати
-обидва вголос.
+    make train
 
-1. Навчальна вибірка — це НАБІР ІСТОРИЧНИХ ЗРІЗІВ, а не одна таблиця «учні».
-   Ми беремо десятки дат у минулому, на кожну рахуємо ознаки станом на той
-   момент і дивимось, що сталось протягом наступних 30 днів. Так модель
-   вчиться на динаміці, а не на статичному портреті.
+Скрипт читає історію з бази, навчає модель, перевіряє її якість і, якщо
+якість прийнятна, зберігає у файл `ml/model.pkl`. Сервер цей файл лише
+завантажує — сам він нічого не навчає.
 
-2. Розбиття train/test — ЗА ЧАСОМ, а не випадкове. Випадкове розбиття дало б
-   красиві метрики й нікчемну модель: у навчальну вибірку потрапило б
-   майбутнє. Це найпоширеніша помилка в задачах відтоку.
+Такий поділ називають «тренування офлайн, передбачення онлайн», і він тут не
+випадковий. Якби модель навчалась у момент запиту, ти щоразу отримувала б трохи
+іншу модель, ніхто не встиг би перевірити її якість, а перший користувач чекав
+би кілька секунд. Тому навчання — окремий крок з окремим результатом-файлом,
+який можна перевірити, покласти в поставку й у разі чого відкотити.
+
+Два рішення в цьому файлі важливіші за вибір алгоритму.
+
+**Навчальні приклади — це історичні зрізи, а не список учнів.** Ми беремо
+кілька десятків дат у минулому. На кожну дату рахуємо, як учень поводився
+до неї, і дивимось, чи пішов він протягом наступних 30 днів. Один учень дає
+стільки прикладів, на скількох зрізах він був активний. Так модель вчиться
+на поведінці в динаміці, а не на статичному портреті.
+
+**Розбиття на навчання і перевірку — за часом, а не випадкове.** Модель
+вчиться на ранніх зрізах, а перевіряється на пізніх — тобто на майбутньому,
+якого вона не бачила. Якби ми розбивали випадково, у навчальні дані
+потрапили б пізніші події, метрики вийшли б чудові, а в реальній роботі
+модель не працювала б. Це найпоширеніша помилка в задачах відтоку.
 """
 
 from __future__ import annotations
 
+import argparse
 import os
 import pickle
 import sys
@@ -36,18 +50,26 @@ from server.features import FEATURE_COLUMNS, FEATURE_SQL, LABEL_SQL  # noqa: E40
 
 MODEL_PATH = Path(__file__).resolve().parent / "model.pkl"
 
-# Зрізи беремо не частіше ніж раз на три тижні: сусідні дати дають майже
-# ідентичні рядки, і модель просто вчить одне й те саме кілька разів.
+# Зрізи беремо раз на три тижні. Частіше немає сенсу: сусідні дати дають
+# майже однакові рядки, і модель просто кілька разів вчить одне й те саме.
 SNAPSHOT_STEP_DAYS = 21
-# Перші 120 днів історії пропускаємо: ознаки за 90 днів там ще не наповнені.
+# Перші місяці історії пропускаємо: ознаки, що дивляться на 90 днів назад,
+# там ще не наповнені, і приклади вийшли б неповноцінні.
 WARMUP_DAYS = 120
-# Останній зріз має бути не пізніше ніж за 31 день до кінця даних —
-# інакше мітку «пішов протягом 30 днів» просто немає з чого порахувати.
+# Останній зріз має бути щонайменше за 31 день до кінця даних — інакше
+# відповідь «чи пішов протягом 30 днів» ще невідома.
 LABEL_HORIZON_DAYS = 31
 HISTORY_DAYS = 18 * 30
 
+# Нижче цього порогу модель не зберігається. ROC AUC 0.5 — це рівень
+# підкидання монетки, 1.0 — ідеальне вгадування. Для задачі відтоку
+# реалістичний діапазон 0.7-0.85; якщо вийшло менше, у даних забракло
+# сигналу, і викладати таку модель у роботу не можна.
+MIN_ROC_AUC = 0.70
+
 
 def snapshots(today: date) -> list[date]:
+    """Дати, станом на які рахуємо поведінку учнів."""
     start = today - timedelta(days=HISTORY_DAYS - WARMUP_DAYS)
     end = today - timedelta(days=LABEL_HORIZON_DAYS)
     out, cur = [], start
@@ -58,6 +80,11 @@ def snapshots(today: date) -> list[date]:
 
 
 def collect(conn: psycopg.Connection, as_of: date) -> tuple[np.ndarray, np.ndarray]:
+    """Ознаки й відповіді для одного зрізу.
+
+    X — таблиця «рядок на учня, колонка на ознаку».
+    y — 1, якщо учень пішов протягом наступних 30 днів, інакше 0.
+    """
     params = {"as_of": as_of.isoformat()}
     with conn.cursor(row_factory=dict_row) as cur:
         cur.execute(FEATURE_SQL, params)
@@ -74,38 +101,42 @@ def collect(conn: psycopg.Connection, as_of: date) -> tuple[np.ndarray, np.ndarr
     return X, y
 
 
+def connect() -> psycopg.Connection | None:
+    """Підключення до бази. Для навчання достатньо прав на читання.
+
+    Джерела перебираємо по черзі, а не беремо перше-ліпше: у змінних оточення
+    легко лишається старе значення, яке вказує в нікуди, і тоді помилка
+    виглядає як «бази немає», хоча поруч лежить робоче підключення.
+    """
+    sources = [(n, os.getenv(n)) for n in ("ADMIN_DATABASE_URL", "DATABASE_URL")]
+    for name, dsn in [(n, v) for n, v in sources if v]:
+        try:
+            conn = psycopg.connect(dsn, connect_timeout=15, prepare_threshold=None)
+            print(f"    підключення через {name}")
+            return conn
+        except psycopg.OperationalError as exc:
+            print(f"    {name}: не вдалось — {str(exc).strip().splitlines()[0]}",
+                  file=sys.stderr)
+    return None
+
+
 def main() -> int:
     load_dotenv()
-    # Пробуємо кілька джерел по черзі, а не беремо перше-ліпше.
-    # Реальний випадок: у змінних хмари лишився ADMIN_DATABASE_URL з локальним
-    # localhost:5433 — і тренування ломилось у неіснуючу базу, хоча поруч
-    # лежав робочий DATABASE_URL. Тренуванню вистачає прав на читання, тож
-    # будь-який із цих рядків підходить.
-    candidates = [(n, os.getenv(n)) for n in ("ADMIN_DATABASE_URL", "DATABASE_URL")]
-    candidates = [(n, v) for n, v in candidates if v]
-    if not candidates:
-        print("Немає DSN. Скопіюй .env.example у .env.", file=sys.stderr)
-        return 1
+    p = argparse.ArgumentParser(description="Натренувати модель ризику відтоку")
+    p.add_argument("--min-auc", type=float, default=MIN_ROC_AUC,
+                   help="нижче цієї якості модель не зберігається")
+    args = p.parse_args()
 
     today = date.today()
     dates = snapshots(today)
     print(f"==> Історичних зрізів: {len(dates)} "
           f"({dates[0]} … {dates[-1]}, крок {SNAPSHOT_STEP_DAYS} дн.)")
 
-    conn = None
-    for name, dsn in candidates:
-        try:
-            conn = psycopg.connect(dsn, connect_timeout=15, prepare_threshold=None)
-            print(f"    підключення через {name}")
-            break
-        except psycopg.OperationalError as exc:
-            first = str(exc).strip().splitlines()[0]
-            print(f"    {name}: не вдалось — {first}", file=sys.stderr)
+    conn = connect()
     if conn is None:
-        print("\nЖодне з підключень не спрацювало.", file=sys.stderr)
-        print("Локально: підніми базу — docker compose up -d", file=sys.stderr)
-        print("У хмарі: перевір DATABASE_URL і прибери зайвий "
-              "ADMIN_DATABASE_URL, якщо він указує на localhost.", file=sys.stderr)
+        print("\nНе вдалось під'єднатись до бази.", file=sys.stderr)
+        print("Якщо база локальна — підніми її: docker compose up -d", file=sys.stderr)
+        print("Якщо база в хмарі — перевір DATABASE_URL у файлі .env", file=sys.stderr)
         return 1
 
     blocks: list[tuple[date, np.ndarray, np.ndarray]] = []
@@ -116,10 +147,11 @@ def main() -> int:
                 blocks.append((d, X, y))
 
     if not blocks:
-        print("Немає даних для тренування. Спершу: make seed", file=sys.stderr)
+        print("У базі немає даних для навчання. Спершу заповни її: make seed",
+              file=sys.stderr)
         return 1
 
-    # Розбиття за часом: останні 25% зрізів — тест. Модель ніколи не бачить
+    # Ранні зрізи — навчання, пізні — перевірка. Модель ніколи не бачить
     # майбутнього відносно того, на чому вчилась.
     split = int(len(blocks) * 0.75)
     X_train = np.vstack([b[1] for b in blocks[:split]])
@@ -127,10 +159,10 @@ def main() -> int:
     X_test = np.vstack([b[1] for b in blocks[split:]])
     y_test = np.concatenate([b[2] for b in blocks[split:]])
 
-    print(f"    train {len(y_train):,} рядків (до {blocks[split - 1][0]}), "
-          f"частка відтоку {y_train.mean():.1%}")
-    print(f"    test  {len(y_test):,} рядків (з {blocks[split][0]}), "
-          f"частка відтоку {y_test.mean():.1%}")
+    print(f"    навчання  {len(y_train):,} прикладів (до {blocks[split - 1][0]}), "
+          f"пішли {y_train.mean():.1%}")
+    print(f"    перевірка {len(y_test):,} прикладів (з {blocks[split][0]}), "
+          f"пішли {y_test.mean():.1%}")
 
     model = GradientBoostingClassifier(
         n_estimators=180, learning_rate=0.06, max_depth=3,
@@ -138,15 +170,23 @@ def main() -> int:
     )
     model.fit(X_train, y_train)
 
-    proba = model.predict_proba(X_test)[:, 1]
-    auc = float(roc_auc_score(y_test, proba))
-    print(f"\n    ROC AUC на тесті: {auc:.3f}")
-    if auc > 0.97:
-        print("    ! Підозріло високо — схоже, у ознаки протекло майбутнє.")
-    elif auc < 0.65:
-        print("    ! Низько — сигналу в даних замало, перевір генератор.")
+    auc = float(roc_auc_score(y_test, model.predict_proba(X_test)[:, 1]))
+    print(f"\n    ROC AUC на перевірці: {auc:.3f}")
 
-    # Метадані для пояснення «чому саме цей учень у ризику».
+    # Ворота якості. Саме заради них навчання винесене в окремий крок:
+    # у робочу поставку не має потрапити модель, яку ніхто не перевірив.
+    if auc < args.min_auc:
+        print(f"\n!! Якість нижча за поріг {args.min_auc}. Модель НЕ збережена —"
+              f"\n   попередня версія (якщо була) лишилась недоторканою.", file=sys.stderr)
+        print("   Найімовірніша причина: у базі замало або надто мало "
+              "різноманітних даних.", file=sys.stderr)
+        return 1
+    if auc > 0.97:
+        print("    ! Підозріло високо. Зазвичай це означає, що в ознаки "
+              "просочилась інформація з майбутнього.")
+
+    # Дані для пояснення «чому саме цей учень у ризику». Порівнюватимемо
+    # значення ознак конкретного учня з типовими по базі.
     X_all = np.vstack([b[1] for b in blocks])
     y_all = np.concatenate([b[2] for b in blocks])
     medians, spread, direction = {}, {}, {}
@@ -155,8 +195,8 @@ def main() -> int:
         medians[name] = round(float(np.median(col)), 2)
         q1, q3 = np.percentile(col, [25, 75])
         spread[name] = float(q3 - q1) or float(col.std()) or 1.0
-        # У який бік відхилення означає ризик — визначаємо з даних,
-        # а не з власних уявлень про предметну область.
+        # У який бік відхилення означає ризик — з'ясовуємо з даних, а не з
+        # власних уявлень про предметну область.
         if col.std() == 0:
             direction[name] = 1.0
         else:
@@ -164,9 +204,8 @@ def main() -> int:
             direction[name] = 1.0 if corr >= 0 else -1.0
 
     importances = dict(zip(FEATURE_COLUMNS, model.feature_importances_.tolist()))
-    top = sorted(importances.items(), key=lambda kv: kv[1], reverse=True)[:5]
-    print("\n    Найвпливовіші ознаки:")
-    for name, w in top:
+    print("\n    На що модель спирається найбільше:")
+    for name, w in sorted(importances.items(), key=lambda kv: kv[1], reverse=True)[:5]:
         print(f"      {w:>6.1%}  {name}")
 
     bundle = {

@@ -13,8 +13,6 @@ from __future__ import annotations
 
 import os
 import pickle
-import subprocess
-import sys
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -28,51 +26,15 @@ MODEL_PATH = Path(os.getenv("MODEL_PATH", "ml/model.pkl"))
 _bundle: dict[str, Any] | None = None
 
 
-def _train_now() -> bool:
-    """Тренує модель на вимогу, якщо файлу немає.
-
-    Тренування при старті контейнера — крихке місце: воно затримує відкриття
-    порту, і хостинг може визнати деплой невдалим ще до того, як модель
-    з'явиться. Тоді сервер піднімається, чотири інструменти працюють, а
-    п'ятий мертвий — найгірший з можливих станів, бо виглядає як робочий.
-
-    Тому тренування живе тут: перший виклик коштує кілька секунд, усі
-    наступні беруть готовий файл.
-    """
-    script = MODEL_PATH.parent / "train.py"
-    if not script.exists():
-        return False
-    print(f"[ml] моделі немає, тренуюсь ({script})", file=sys.stderr)
-    try:
-        done = subprocess.run(
-            [sys.executable, str(script)],
-            capture_output=True, text=True, timeout=300,
-        )
-    except subprocess.TimeoutExpired:
-        print("[ml] тренування не вклалось у 5 хвилин", file=sys.stderr)
-        return False
-    if done.returncode != 0:
-        print(f"[ml] тренування впало:\n{done.stderr[-2000:]}", file=sys.stderr)
-        return False
-    return MODEL_PATH.exists()
-
-
 def _load() -> dict[str, Any]:
     global _bundle
     if _bundle is None:
         if not MODEL_PATH.exists():
-            _train_now()
-        if not MODEL_PATH.exists():
-            # Локально й у хмарі лікується по-різному, тому кажемо обидва
-            # варіанти: порада «зроби make train» усередині контейнера,
-            # куди ніхто не зайде терміналом, марна.
-            local = os.getenv("MCP_TRANSPORT", "stdio") == "stdio"
-            fix = ("Спроба натренувати її щойно не вдалась. Запусти вручну "
-                   "й подивись помилку: make train"
-                   if local else
-                   "Спроба натренувати її щойно не вдалась. Причина — у логах "
-                   "сервісу, шукай рядок «[ml] тренування впало».")
-            raise FileNotFoundError(f"Модель не знайдено ({MODEL_PATH}). {fix}")
+            raise FileNotFoundError(
+                f"Модель не знайдено ({MODEL_PATH}). Її треба натренувати "
+                f"заздалегідь окремою командою: make train. Сервер навчанням "
+                f"не займається — він лише використовує готову модель."
+            )
         with MODEL_PATH.open("rb") as fh:
             _bundle = pickle.load(fh)
     return _bundle
