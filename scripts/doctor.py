@@ -79,6 +79,16 @@ def main() -> int:
         if not missing:
             n = fetch("SELECT COUNT(*) AS n FROM lessons")[0]["n"]
             check("У базі є дані", n > 0, f"уроків: {n:,}", "заповни базу: make seed")
+    except NotImplementedError:
+        # Нормальний стан гілки workshop-start: функції доступу до бази ще
+        # не написані. Це не поломка оточення, і лікується вона інакше.
+        print(f"{WARN}Функції доступу до бази ще не написані")
+        if problems:
+            return _report()
+        print("\nОточення в порядку. Саму базу перевірити поки не можна:")
+        print("функції доступу до неї ми допишемо разом на воркшопі.")
+        print("Побачити робочий варіант: git checkout main\n")
+        return 0
     except Exception as exc:  # noqa: BLE001
         from server.db import friendly_db_error
         check("База відповідає", False, friendly_db_error(exc),
