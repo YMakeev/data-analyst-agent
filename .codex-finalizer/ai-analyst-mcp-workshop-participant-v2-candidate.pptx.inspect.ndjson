@@ -1,0 +1,663 @@
+{"kind":"deck","id":"pr/52djib","name":"Deck"}
+{"kind":"layout","layoutId":"50248f2f-f29b-48fb-95ac-7b3bd0efc356","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"200ebf56-d0d4-4f5b-9b22-489c6cb649e5","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/8mwtbx","slide":1,"title":"AI-аналітик","textShapes":2}
+{"kind":"textbox","id":"sh/qt0rid4j","slide":1,"text":"AI-аналітик\nнад базою даних","textPreview":"AI-аналітик | над базою даних","textChars":27,"textLines":2,"bbox":[72,178,650,165]}
+{"kind":"textbox","id":"sh/1kbaxs36","slide":1,"text":"Будуємо аналітика даних як MCP для Claude","textPreview":"Будуємо аналітика даних як MCP для Claude","textChars":41,"textLines":1,"bbox":[76,382,610,82]}
+{"kind":"image","id":"im/dwfedwje","slide":1,"name":"","alt":"AI-аналітикиня з ноутбуком та візуальною схемою потоків даних","bbox":[0,0,1280,720]}
+{"kind":"image","id":"im/qt4vi1kn","slide":1,"name":"","alt":"Data Loves Academy","bbox":[72,40,300,72]}
+{"kind":"notes","id":"nt/8mwtbx","slide":1,"text":"Таймінг: 00:00–00:30\n\nВідкриття:\n«Сьогодні ми не будемо вчити всі слова зі світу розробки. Ми зберемо одну зрозумілу систему від питання людини до відповіді з бази і винесемо її в хмару».\n\nПопросіть підняти руку тих, хто ніколи не запускав Docker або MCP. Це нормальна стартова точка."}
+{"kind":"slide","id":"sl/fdunie","slide":2,"title":"02","textShapes":11}
+{"kind":"shape","id":"sh/zixgbi9s","slide":2,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/0j6h4nqd","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/1kfydsri","slide":2,"text":"Протягом воркшопу ми пройдемо весь шлях","textPreview":"Протягом воркшопу ми пройдемо весь шлях","textChars":39,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/ml8z6x83","slide":2,"bbox":[72,190,260,280]}
+{"kind":"textbox","id":"sh/nmhgf29o","slide":2,"text":"Термінологія","textPreview":"Термінологія","textChars":12,"textLines":1,"bbox":[92,218,220,78]}
+{"kind":"textbox","id":"sh/onqh87q9","slide":2,"text":"GitHub, Docker, база, MCP","textPreview":"GitHub, Docker, база, MCP","textChars":25,"textLines":1,"bbox":[92,325,220,127]}
+{"kind":"shape","id":"sh/9ozyhcru","slide":2,"bbox":[364,190,260,280]}
+{"kind":"textbox","id":"sh/ap8zah8f","slide":2,"text":"Як працює агент","textPreview":"Як працює агент","textChars":15,"textLines":1,"bbox":[384,218,220,78]}
+{"kind":"textbox","id":"sh/vqh0j290","slide":2,"text":"архітектура, інструменти, безпека","textPreview":"архітектура, інструменти, безпека","textChars":33,"textLines":1,"bbox":[384,325,220,127]}
+{"kind":"shape","id":"sh/j69w72p8","slide":2,"bbox":[656,190,260,280]}
+{"kind":"textbox","id":"sh/i50vyhon","slide":2,"text":"Локальний запуск","textPreview":"Локальний запуск","textChars":16,"textLines":1,"bbox":[676,218,220,78]}
+{"kind":"textbox","id":"sh/58re9c7e","slide":2,"text":"підготовка та живе демо","textPreview":"підготовка та живе демо","textChars":23,"textLines":1,"bbox":[676,325,220,127]}
+{"kind":"shape","id":"sh/k7ix076t","slide":2,"bbox":[948,190,260,280]}
+{"kind":"textbox","id":"sh/v2pw32pc","slide":2,"text":"Хмара","textPreview":"Хмара","textChars":5,"textLines":1,"bbox":[968,218,220,78]}
+{"kind":"textbox","id":"sh/ahgvuxor","slide":2,"text":"Docker-образ, Railway, підключення","textPreview":"Docker-образ, Railway, підключення","textChars":34,"textLines":1,"bbox":[968,325,220,127]}
+{"kind":"textbox","id":"sh/x47e5c72","slide":2,"text":"Питання можна ставити по ходу","textPreview":"Питання можна ставити по ходу","textChars":29,"textLines":1,"bbox":[72,530,1135,40]}
+{"kind":"notes","id":"nt/fdunie","slide":2,"text":"Таймінг: 00:30–01:15\n\nПокажіть маршрут і домовтесь: питання можна ставити по ходу, але довгі розбори підуть після основного маршруту.\n\nКлючова обіцянка: наприкінці людина розуміє не лише «які команди вставити», а й навіщо існує кожна частина."}
+{"kind":"slide","id":"sl/dxh2kl","slide":3,"title":"03","textShapes":8}
+{"kind":"shape","id":"sh/lwb6tovm","slide":3,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/yt0nitwv","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/zutorydg","slide":3,"text":"Звичайне питання стає перевіреною відповіддю","textPreview":"Звичайне питання стає перевіреною відповіддю","textChars":44,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/8z2po3ed","slide":3,"bbox":[78,202,410,170]}
+{"kind":"textbox","id":"sh/9kb6x8vi","slide":3,"text":"«Скільки уроків ми провели минулого місяця?»","textPreview":"«Скільки уроків ми провели минулого місяця?»","textChars":44,"textLines":1,"bbox":[110,232,346,110]}
+{"kind":"shape","id":"sh/mxk7mtw7","slide":3,"bbox":[790,202,410,170]}
+{"kind":"textbox","id":"sh/nytovyds","slide":3,"text":"1 284 уроки","textPreview":"1 284 уроки","textChars":11,"textLines":1,"bbox":[820,232,350,56]}
+{"kind":"textbox","id":"sh/o3i5czet","slide":3,"text":"із SQL, поясненням і можливістю зберегти звіт","textPreview":"із SQL, поясненням і можливістю зберегти звіт","textChars":45,"textLines":1,"bbox":[825,300,340,58]}
+{"kind":"shape","id":"sh/p4r6l4ve","slide":3,"bbox":[545,202,180,170]}
+{"kind":"textbox","id":"sh/983qxw7e","slide":3,"text":"АГЕНТ","textPreview":"АГЕНТ","textChars":5,"textLines":1,"bbox":[565,228,140,35]}
+{"kind":"textbox","id":"sh/o7u94r6t","slide":3,"text":"перевіряє схему\nпише SELECT","textPreview":"перевіряє схему | пише SELECT","textChars":27,"textLines":2,"bbox":[565,284,140,70]}
+{"kind":"shape","id":"sh/n6l8vmp8","slide":3,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/m5cr2ho3","slide":3,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/xcna1w7q","slide":3,"text":"Наша мета — зробити цей шлях видимим і контрольованим","textPreview":"Наша мета — зробити цей шлях видимим і контрольованим","textChars":53,"textLines":1,"bbox":[160,455,960,52]}
+{"kind":"notes","id":"nt/dxh2kl","slide":3,"text":"Таймінг: 01:15–02:15\n\nПочніть із конкретного питання. Поясніть, що цифра на слайді ілюстративна: на демо побачимо реальну відповідь із поточного набору даних.\n\nГоловна думка: користувач не пише SQL, але система все одно показує, що саме було виконано."}
+{"kind":"slide","id":"sl/2gyhzb","slide":4,"title":"04","textShapes":7}
+{"kind":"shape","id":"sh/4ve1gnqt","slide":4,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/3u50ni98","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/itcjed8n","slide":4,"text":"Що ми будемо робити","textPreview":"Що ми будемо робити","textChars":19,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"textbox","id":"sh/d0n2tsra","slide":4,"text":"Підключимо Claude до PostgreSQL через MCP-сервер","textPreview":"Підключимо Claude до PostgreSQL через MCP-сервер","textChars":48,"textLines":1,"bbox":[110,150,1060,76]}
+{"kind":"shape","id":"sh/sze1knqp","slide":4,"bbox":[110,305,245,150]}
+{"kind":"shape","id":"sh/ry50ri94","slide":4,"bbox":[515,305,245,150]}
+{"kind":"shape","id":"sh/qxwjid8j","slide":4,"bbox":[925,305,245,150]}
+{"kind":"textbox","id":"sh/t43ih8rq","slide":4,"text":"Людина + Claude","textPreview":"Людина + Claude","textChars":15,"textLines":1,"bbox":[135,350,195,58]}
+{"kind":"textbox","id":"sh/83u183ql","slide":4,"text":"MCP-сервер","textPreview":"MCP-сервер","textChars":10,"textLines":1,"bbox":[540,350,195,58]}
+{"kind":"textbox","id":"sh/mpgn6dwb","slide":4,"text":"PostgreSQL","textPreview":"PostgreSQL","textChars":10,"textLines":1,"bbox":[950,350,195,58]}
+{"kind":"shape","id":"sh/nqpozidw","slide":4,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/8ry58neh","slide":4,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/9s761svm","slide":4,"text":"Сервер дає Claude п’ять дозволених функцій","textPreview":"Сервер дає Claude п’ять дозволених функцій","textChars":42,"textLines":1,"bbox":[300,530,680,42]}
+{"kind":"notes","id":"nt/2gyhzb","slide":4,"text":"Таймінг: 02:15–03:15\n\nСкажіть одним подихом: «Ми не даємо Claude пароль і свободу робити будь-що. Ми даємо серверу п’ять чітко описаних функцій».\n\nЦе рамка для всього воркшопу."}
+{"kind":"slide","id":"sl/amkr17","slide":5,"title":"05","textShapes":20}
+{"kind":"shape","id":"sh/va9oz21g","slide":5,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/wbi58721","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/xcr61cj6","slide":5,"text":"Наш словник термінів на сьогодні","textPreview":"Наш словник термінів на сьогодні","textChars":32,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/m5gn2xkj","slide":5,"bbox":[88,149,34,34]}
+{"kind":"textbox","id":"sh/n69ov214","slide":5,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[88,150,34,32]}
+{"kind":"textbox","id":"sh/87i5472p","slide":5,"text":"Модель","textPreview":"Модель","textChars":6,"textLines":1,"bbox":[144,145,230,42]}
+{"kind":"textbox","id":"sh/98r6xsja","slide":5,"text":"генерує наступний крок або текст","textPreview":"генерує наступний крок або текст","textChars":32,"textLines":1,"bbox":[380,145,780,42]}
+{"kind":"shape","id":"sh/yhgnydkn","slide":5,"bbox":[145,201,1015,1]}
+{"kind":"shape","id":"sh/ziporil8","slide":5,"bbox":[88,229,34,34]}
+{"kind":"textbox","id":"sh/nepkrq9c","slide":5,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[88,230,34,32]}
+{"kind":"textbox","id":"sh/2dg3y58r","slide":5,"text":"Агент","textPreview":"Агент","textChars":5,"textLines":1,"bbox":[144,225,230,42]}
+{"kind":"textbox","id":"sh/p072t0ri","slide":5,"text":"повторює цикл: подумав, викликав, перевірив","textPreview":"повторює цикл: подумав, викликав, перевірив","textChars":43,"textLines":1,"bbox":[380,225,780,42]}
+{"kind":"shape","id":"sh/ozyl0vqx","slide":5,"bbox":[145,281,1015,1]}
+{"kind":"shape","id":"sh/b29kva9o","slide":5,"bbox":[88,309,34,34]}
+{"kind":"textbox","id":"sh/a1g32583","slide":5,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[88,310,34,32]}
+{"kind":"textbox","id":"sh/x4r2xkre","slide":5,"text":"Інструмент","textPreview":"Інструмент","textChars":10,"textLines":1,"bbox":[144,305,230,42]}
+{"kind":"textbox","id":"sh/w3il4fq9","slide":5,"text":"звичайна функція з чітким входом і виходом","textPreview":"звичайна функція з чітким входом і виходом","textChars":42,"textLines":1,"bbox":[380,305,780,42]}
+{"kind":"shape","id":"sh/r65kj694","slide":5,"bbox":[145,361,1015,1]}
+{"kind":"shape","id":"sh/q5wjql8z","slide":5,"bbox":[88,389,34,34]}
+{"kind":"textbox","id":"sh/ud4fedwj","slide":5,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[88,390,34,32]}
+{"kind":"textbox","id":"sh/fexwnix4","slide":5,"text":"MCP","textPreview":"MCP","textChars":3,"textLines":1,"bbox":[144,385,230,42]}
+{"kind":"textbox","id":"sh/gf6xgnep","slide":5,"text":"правила розмови клієнта з інструментами","textPreview":"правила розмови клієнта з інструментами","textChars":39,"textLines":1,"bbox":[380,385,780,42]}
+{"kind":"shape","id":"sh/h0fepsfa","slide":5,"bbox":[145,441,1015,1]}
+{"kind":"shape","id":"sh/694vadwn","slide":5,"bbox":[88,469,34,34]}
+{"kind":"textbox","id":"sh/7adwjyxs","slide":5,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[88,470,34,32]}
+{"kind":"textbox","id":"sh/sbmxc3ed","slide":5,"text":"База","textPreview":"База","textChars":4,"textLines":1,"bbox":[144,465,230,42]}
+{"kind":"textbox","id":"sh/tcvel8fy","slide":5,"text":"структуровано зберігає дані","textPreview":"структуровано зберігає дані","textChars":27,"textLines":1,"bbox":[380,465,780,42]}
+{"kind":"shape","id":"sh/i5kv6twb","slide":5,"bbox":[145,521,1015,1]}
+{"kind":"shape","id":"sh/j6twfyxw","slide":5,"bbox":[88,549,34,34]}
+{"kind":"textbox","id":"sh/10jilwze","slide":5,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[88,550,34,32]}
+{"kind":"textbox","id":"sh/0zahcryt","slide":5,"text":"Деплой","textPreview":"Деплой","textChars":6,"textLines":1,"bbox":[144,545,230,42]}
+{"kind":"textbox","id":"sh/zy10jmh8","slide":5,"text":"процес розгортання сервісу, щоб він був доступний іншим користувачам","textPreview":"процес розгортання сервісу, щоб він був доступний іншим користувачам","textChars":68,"textLines":1,"bbox":[380,545,780,42]}
+{"kind":"notes","id":"nt/amkr17","slide":5,"text":"Таймінг: 03:15–04:30\n\nПройдіть визначення без заглиблення.\n\nПобутова аналогія: модель — мозок, агент — поведінка, інструменти — руки, MCP — розетка стандартного формату, база — склад, деплой — відкрита майстерня в хмарі."}
+{"kind":"slide","id":"sl/ps32ht","slide":6,"title":"06","textShapes":9}
+{"kind":"shape","id":"sh/q183uhk3","slide":6,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/d4zm5cju","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/c3qlw729","slide":6,"text":"Git зберігає історію, GitHub — репозиторій онлайн","textPreview":"Git зберігає історію, GitHub — репозиторій онлайн","textChars":49,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/z6147m1k","slide":6,"bbox":[92,170,500,350]}
+{"kind":"shape","id":"sh/e583yhkf","slide":6,"bbox":[688,170,500,350]}
+{"kind":"textbox","id":"sh/nu14b61w","slide":6,"text":"Git","textPreview":"Git","textChars":3,"textLines":1,"bbox":[270,215,270,56]}
+{"kind":"textbox","id":"sh/mtsn21kb","slide":6,"text":"«машина часу» для файлів","textPreview":"«машина часу» для файлів","textChars":24,"textLines":1,"bbox":[270,280,270,42]}
+{"kind":"textbox","id":"sh/cf2pcbe9","slide":6,"text":"commit = збережена версія\nbranch = окрема лінія роботи","textPreview":"commit = збережена версія | branch = окрема лінія роботи","textChars":54,"textLines":2,"bbox":[130,360,410,100]}
+{"kind":"textbox","id":"sh/xgbqlgvu","slide":6,"text":"GitHub","textPreview":"GitHub","textChars":6,"textLines":1,"bbox":[875,215,270,56]}
+{"kind":"textbox","id":"sh/ad07a1w3","slide":6,"text":"хостинг для Git-репозиторію","textPreview":"хостинг для Git-репозиторію","textChars":27,"textLines":1,"bbox":[875,280,270,42]}
+{"kind":"textbox","id":"sh/bet8j6do","slide":6,"text":"clone = завантажити копію\npush = відправити зміни","textPreview":"clone = завантажити копію | push = відправити зміни","textChars":49,"textLines":2,"bbox":[735,360,410,100]}
+{"kind":"textbox","id":"sh/kj2pgvel","slide":6,"text":"Railway бере код саме з GitHub","textPreview":"Railway бере код саме з GitHub","textChars":30,"textLines":1,"bbox":[340,565,600,38]}
+{"kind":"image","id":"im/cza9g72p","slide":6,"name":"","alt":"Git","bbox":[130,215,110,110]}
+{"kind":"image","id":"im/x0jq9cju","slide":6,"name":"","alt":"GitHub","bbox":[735,215,110,110]}
+{"kind":"notes","id":"nt/ps32ht","slide":6,"text":"Таймінг: 04:30–06:00\n\nПояснення для новачка:\nGit працює і без інтернету та пам’ятає версії. GitHub — сайт, де репозиторій лежить онлайн, ним можна ділитись і підключити Railway.\n\nУ цьому проєкті є дві гілки: main і workshop-start.\n\nДжерело: https://docs.github.com/en/get-started/learning-to-code/getting-started-with-git"}
+{"kind":"slide","id":"sl/odbe9g","slide":7,"title":"07","textShapes":9}
+{"kind":"shape","id":"sh/0rutszqx","slide":7,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/f6lsze9c","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/e5cbq98r","slide":7,"text":"Docker дає однакове середовище на кожному комп’ютері","textPreview":"Docker дає однакове середовище на кожному комп’ютері","textChars":52,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"textbox","id":"sh/s3utozq1","slide":7,"text":"Контейнер","textPreview":"Контейнер","textChars":9,"textLines":1,"bbox":[455,180,600,54]}
+{"kind":"textbox","id":"sh/r2lsvu9g","slide":7,"text":"Ізольований процес із потрібною версією програми та її налаштуваннями","textPreview":"Ізольований процес із потрібною версією програми та її налаштуваннями","textChars":69,"textLines":1,"bbox":[455,250,675,90]}
+{"kind":"shape","id":"sh/q1cbmp8v","slide":7,"bbox":[455,380,300,120]}
+{"kind":"shape","id":"sh/x07u9o7q","slide":7,"bbox":[820,380,300,120]}
+{"kind":"textbox","id":"sh/wzyt0jq5","slide":7,"text":"Образ","textPreview":"Образ","textChars":5,"textLines":1,"bbox":[485,400,240,35]}
+{"kind":"textbox","id":"sh/il0vm1wj","slide":7,"text":"рецепт","textPreview":"рецепт","textChars":6,"textLines":1,"bbox":[485,446,240,30]}
+{"kind":"textbox","id":"sh/jm9cf6x4","slide":7,"text":"Контейнер","textPreview":"Контейнер","textChars":9,"textLines":1,"bbox":[850,400,240,35]}
+{"kind":"textbox","id":"sh/4n2dobep","slide":7,"text":"запущена страва","textPreview":"запущена страва","textChars":15,"textLines":1,"bbox":[850,446,240,30]}
+{"kind":"shape","id":"sh/5obuhgfa","slide":7,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/uh0vi1wn","slide":7,"text":"У нас Docker локально запускає PostgreSQL","textPreview":"У нас Docker локально запускає PostgreSQL","textChars":41,"textLines":1,"bbox":[455,548,680,38]}
+{"kind":"image","id":"im/kva9gfap","slide":7,"name":"","alt":"Docker","bbox":[90,180,300,260]}
+{"kind":"notes","id":"nt/odbe9g","slide":7,"text":"Таймінг: 06:00–07:30\n\nАналогія: образ — рецепт і запаковані інгредієнти, контейнер — конкретно запущена страва. Один образ можна запускати багато разів.\n\nУ docker-compose.yml описано один сервіс db на PostgreSQL 16 Alpine. Порт 5433 зовні навмисно уникає конфлікту зі звичайним 5432.\n\nДжерело: https://docs.docker.com/get-started/docker-overview/"}
+{"kind":"slide","id":"sl/ocu9jg","slide":8,"title":"08","textShapes":7}
+{"kind":"shape","id":"sh/v6p8jqhc","slide":8,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/wrypcvix","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/hs7qlgz2","slide":8,"text":"Python виконує логіку, PostgreSQL зберігає дані","textPreview":"Python виконує логіку, PostgreSQL зберігає дані","textChars":47,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/itg7el0n","slide":8,"bbox":[90,170,500,370]}
+{"kind":"shape","id":"sh/jup8nqh8","slide":8,"bbox":[690,170,500,370]}
+{"kind":"textbox","id":"sh/yxc7210j","slide":8,"text":"Python","textPreview":"Python","textChars":6,"textLines":1,"bbox":[285,220,250,45]}
+{"kind":"textbox","id":"sh/zy58b6h4","slide":8,"text":"server/\nінструменти\nML-модель","textPreview":"server/ | інструменти | ML-модель","textChars":29,"textLines":3,"bbox":[130,370,395,120]}
+{"kind":"textbox","id":"sh/v6pc7i1s","slide":8,"text":"PostgreSQL","textPreview":"PostgreSQL","textChars":10,"textLines":1,"bbox":[880,220,265,45]}
+{"kind":"textbox","id":"sh/u5wvedkn","slide":8,"text":"таблиці\nзв’язки\nправа доступу","textPreview":"таблиці | зв’язки | права доступу","textChars":29,"textLines":3,"bbox":[730,370,395,120]}
+{"kind":"textbox","id":"sh/h87u9sjy","slide":8,"text":"psycopg = бібліотека-мостик між Python і PostgreSQL","textPreview":"psycopg = бібліотека-мостик між Python і PostgreSQL","textChars":51,"textLines":1,"bbox":[210,585,860,36]}
+{"kind":"image","id":"im/5gjydora","slide":8,"name":"","alt":"Python","bbox":[130,215,120,120]}
+{"kind":"image","id":"im/kfahkjap","slide":8,"name":"","alt":"PostgreSQL","bbox":[730,215,120,120]}
+{"kind":"notes","id":"nt/ocu9jg","slide":8,"text":"Таймінг: 07:30–09:00\n\nPython — мова, якою написано сервер і ML. PostgreSQL — окрема програма-база. psycopg відкриває з’єднання та передає SQL.\n\nПідкресліть: дані не живуть «у Python-файлі». Сервер лише приходить до бази, читає і повертає результат."}
+{"kind":"slide","id":"sl/3mbbx6","slide":9,"title":"09","textShapes":9}
+{"kind":"shape","id":"sh/cj6x8ri1","slide":9,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/ridwfm1g","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/qh4f6h0b","slide":9,"text":"MCP задає формат повідомлень","textPreview":"MCP задає формат повідомлень","textChars":28,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/4fmd47i5","slide":9,"bbox":[350,205,245,225]}
+{"kind":"textbox","id":"sh/3edwb21k","slide":9,"text":"tools/list","textPreview":"tools/list","textChars":10,"textLines":1,"bbox":[370,250,205,44]}
+{"kind":"textbox","id":"sh/2d4v2x0z","slide":9,"text":"які інструменти доступні","textPreview":"які інструменти доступні","textChars":24,"textLines":1,"bbox":[370,325,205,70]}
+{"kind":"shape","id":"sh/hcve9sje","slide":9,"bbox":[635,205,245,225]}
+{"kind":"textbox","id":"sh/gbmd07it","slide":9,"text":"tools/call","textPreview":"tools/call","textChars":10,"textLines":1,"bbox":[655,250,205,44]}
+{"kind":"textbox","id":"sh/ytwnu1gb","slide":9,"text":"який інструмент викликати","textPreview":"який інструмент викликати","textChars":25,"textLines":1,"bbox":[655,325,205,70]}
+{"kind":"shape","id":"sh/zu5on6xw","slide":9,"bbox":[920,205,245,225]}
+{"kind":"textbox","id":"sh/kvy5wby1","slide":9,"text":"result","textPreview":"result","textChars":6,"textLines":1,"bbox":[940,250,205,44]}
+{"kind":"textbox","id":"sh/lw76pgfm","slide":9,"text":"що повернув сервер","textPreview":"що повернув сервер","textChars":18,"textLines":1,"bbox":[940,325,205,70]}
+{"kind":"textbox","id":"sh/apwnq1gz","slide":9,"text":"Claude аналізує. Сервер виконує функцію. MCP переносить повідомлення","textPreview":"Claude аналізує. Сервер виконує функцію. MCP переносить повідомлення","textChars":68,"textLines":1,"bbox":[180,520,920,62]}
+{"kind":"image","id":"im/4vat0bmd","slide":9,"name":"","alt":"Model Context Protocol","bbox":[82,205,210,210]}
+{"kind":"notes","id":"nt/3mbbx6","slide":9,"text":"Таймінг: 09:00–09:45\n\nПоясніть MCP як домовленість про формат повідомлень. Клієнт спершу запитує список інструментів, потім викликає потрібний і отримує структурований результат.\n\nMCP не виконує аналіз самостійно: рішення приймає Claude, а Python-функцію виконує наш сервер."}
+{"kind":"slide","id":"sl/nknqz1","slide":10,"title":"10","textShapes":8}
+{"kind":"shape","id":"sh/nuloni1c","slide":10,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/ovupwnix","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/pw36psz2","slide":10,"text":"MCP з’єднує Claude з інструментами","textPreview":"MCP з’єднує Claude з інструментами","textChars":34,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/fq1oji10","slide":10,"bbox":[370,190,300,190]}
+{"kind":"shape","id":"sh/0rupsnil","slide":10,"bbox":[840,190,300,190]}
+{"kind":"textbox","id":"sh/1s36lsj6","slide":10,"text":"Клієнт","textPreview":"Клієнт","textChars":6,"textLines":1,"bbox":[410,230,220,42]}
+{"kind":"textbox","id":"sh/ylw72h0z","slide":10,"text":"Claude Desktop","textPreview":"Claude Desktop","textChars":14,"textLines":1,"bbox":[410,292,220,36]}
+{"kind":"textbox","id":"sh/zm58v2hk","slide":10,"text":"Сервер","textPreview":"Сервер","textChars":6,"textLines":1,"bbox":[880,230,220,42]}
+{"kind":"textbox","id":"sh/n6d8ni58","slide":10,"text":"наші 5 інструментів","textPreview":"наші 5 інструментів","textChars":19,"textLines":1,"bbox":[880,292,220,36]}
+{"kind":"shape","id":"sh/m54red4n","slide":10,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/98vapsne","slide":10,"text":"СТАНДАРТНИЙ ПРОТОКОЛ","textPreview":"СТАНДАРТНИЙ ПРОТОКОЛ","textChars":20,"textLines":1,"bbox":[560,410,380,36]}
+{"kind":"textbox","id":"sh/o7m9gnmt","slide":10,"text":"Клієнт бачить назву, опис, аргументи та результат кожного інструмента","textPreview":"Клієнт бачить назву, опис, аргументи та результат кожного інструмента","textChars":69,"textLines":1,"bbox":[240,500,850,70]}
+{"kind":"image","id":"im/juh0jeh0","slide":10,"name":"","alt":"Model Context Protocol","bbox":[90,190,210,210]}
+{"kind":"notes","id":"nt/nknqz1","slide":10,"text":"Таймінг: 09:45–10:45\n\nАналогія: USB-C задає зрозумілий спосіб з’єднання різних пристроїв. MCP так само дає клієнту стандартний спосіб побачити та викликати інструменти сервера.\n\nУ специфікації MCP сервер може давати tools, resources і prompts. У цьому демо головне — tools.\n\nДжерело: https://modelcontextprotocol.io/specification/draft/server/index"}
+{"kind":"slide","id":"sl/wjatyr","slide":11,"title":"11","textShapes":12}
+{"kind":"shape","id":"sh/3uhw7y5s","slide":11,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/4vad036d","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/5wje98ny","slide":11,"text":"Модель, агент і інструменти мають різні ролі","textPreview":"Модель, агент і інструменти мають різні ролі","textChars":44,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/up8vutov","slide":11,"bbox":[80,205,300,255]}
+{"kind":"shape","id":"sh/vqhc3y5g","slide":11,"bbox":[104,230,34,34]}
+{"kind":"textbox","id":"sh/wrqdw361","slide":11,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[104,231,34,32]}
+{"kind":"textbox","id":"sh/hszu5onm","slide":11,"text":"Модель","textPreview":"Модель","textChars":6,"textLines":1,"bbox":[104,290,250,46]}
+{"kind":"textbox","id":"sh/elsv6dof","slide":11,"text":"вирішує, що робити далі","textPreview":"вирішує, що робити далі","textChars":23,"textLines":1,"bbox":[104,355,250,70]}
+{"kind":"shape","id":"sh/fm1wfi50","slide":11,"bbox":[455,205,300,255]}
+{"kind":"shape","id":"sh/3alwfa10","slide":11,"bbox":[479,230,34,34]}
+{"kind":"textbox","id":"sh/29cvm5kf","slide":11,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[479,231,34,32]}
+{"kind":"textbox","id":"sh/pc3ehkj6","slide":11,"text":"Агентний цикл","textPreview":"Агентний цикл","textChars":13,"textLines":1,"bbox":[479,290,250,46]}
+{"kind":"textbox","id":"sh/4buxofil","slide":11,"text":"викликає функцію та читає результат","textPreview":"викликає функцію та читає результат","textChars":35,"textLines":1,"bbox":[479,355,250,70]}
+{"kind":"shape","id":"sh/rylwju1c","slide":11,"bbox":[830,205,300,255]}
+{"kind":"shape","id":"sh/qdcfqp0r","slide":11,"bbox":[854,230,34,34]}
+{"kind":"textbox","id":"sh/d03el4j2","slide":11,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[854,231,34,32]}
+{"kind":"textbox","id":"sh/czuxszih","slide":11,"text":"Інструмент","textPreview":"Інструмент","textChars":10,"textLines":1,"bbox":[854,290,250,46]}
+{"kind":"textbox","id":"sh/z25wnu18","slide":11,"text":"детерміновано виконує одну дію","textPreview":"детерміновано виконує одну дію","textChars":30,"textLines":1,"bbox":[854,355,250,70]}
+{"kind":"shape","id":"sh/e1wfup0n","slide":11,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/axgzmtkv","slide":11,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/bypgvylg","slide":11,"text":"У коді ми пишемо інструменти. Послідовність обирає Claude","textPreview":"У коді ми пишемо інструменти. Послідовність обирає Claude","textChars":57,"textLines":1,"bbox":[190,535,900,48]}
+{"kind":"notes","id":"nt/wjatyr","slide":11,"text":"Таймінг: 10:45–11:45\n\nClaude як модель обирає крок. Агентний цикл виконує послідовність кроків. Python-функції роблять конкретну роботу.\n\nУ цьому проєкті немає вручну прописаного маршруту list_tables, describe_table, run_sql. Модель складає його під запит."}
+{"kind":"slide","id":"sl/0kfkaa","slide":12,"title":"12","textShapes":11}
+{"kind":"shape","id":"sh/etszuxwz","slide":12,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/1w3y5sfa","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/0vahw7e5","slide":12,"text":"Доступ до даних проходить через MCP-сервер","textPreview":"Доступ до даних проходить через MCP-сервер","textChars":42,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/nilg72xg","slide":12,"bbox":[70,210,205,150]}
+{"kind":"shape","id":"sh/mhczyxwv","slide":12,"bbox":[390,180,300,210]}
+{"kind":"shape","id":"sh/9k3y9cfm","slide":12,"bbox":[830,140,320,150]}
+{"kind":"shape","id":"sh/ojuh07e1","slide":12,"bbox":[830,350,320,120]}
+{"kind":"shape","id":"sh/vmlgbmxs","slide":12,"bbox":[390,480,300,105]}
+{"kind":"textbox","id":"sh/alcz2hw7","slide":12,"text":"Людина\n+ Claude","textPreview":"Людина | + Claude","textChars":15,"textLines":2,"bbox":[100,248,145,72]}
+{"kind":"textbox","id":"sh/cziho36t","slide":12,"text":"MCP-сервер","textPreview":"MCP-сервер","textChars":10,"textLines":1,"bbox":[430,210,220,42]}
+{"kind":"textbox","id":"sh/d0ryh87e","slide":12,"text":"5 інструментів\nперевірки\nжурнал","textPreview":"5 інструментів | перевірки | журнал","textChars":31,"textLines":3,"bbox":[430,280,220,86]}
+{"kind":"textbox","id":"sh/qx0zmto3","slide":12,"text":"PostgreSQL","textPreview":"PostgreSQL","textChars":10,"textLines":1,"bbox":[880,175,220,40]}
+{"kind":"textbox","id":"sh/ry9gfypo","slide":12,"text":"read-only роль","textPreview":"read-only роль","textChars":14,"textLines":1,"bbox":[880,228,220,32]}
+{"kind":"textbox","id":"sh/032hs365","slide":12,"text":"ML-модель","textPreview":"ML-модель","textChars":9,"textLines":1,"bbox":[880,380,220,38]}
+{"kind":"textbox","id":"sh/14byl87q","slide":12,"text":"готовий model.pkl","textPreview":"готовий model.pkl","textChars":17,"textLines":1,"bbox":[880,426,220,28]}
+{"kind":"textbox","id":"sh/e1kzqtoz","slide":12,"text":"HTML-звіт","textPreview":"HTML-звіт","textChars":9,"textLines":1,"bbox":[430,510,220,36]}
+{"kind":"shape","id":"sh/z2tgjypk","slide":12,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/or2hgn61","slide":12,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/9svips7m","slide":12,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/xc7qdovu","slide":12,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/wbypkju9","slide":12,"text":"Пароль від бази зберігається на сервері, а не в чаті","textPreview":"Пароль від бази зберігається на сервері, а не в чаті","textChars":52,"textLines":1,"bbox":[730,535,470,50]}
+{"kind":"notes","id":"nt/0kfkaa","slide":12,"text":"Таймінг: 11:45–13:00\n\nПройдіть схему зліва направо. Claude бачить лише контракт інструментів. MCP-сервер тримає DATABASE_URL і сам підключається до PostgreSQL.\n\nML-модель — локальний файл, який сервер завантажує. save_report пише HTML у reports/.\n\nВажливо: у хмарі публічний MCP без автентифікації підходить лише для синтетичних даних."}
+{"kind":"slide","id":"sl/52kz9d","slide":13,"title":"13","textShapes":15}
+{"kind":"shape","id":"sh/z2hsz698","slide":13,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/03q9sbqd","slide":13,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/loza1gry","slide":13,"text":"Як агент дізнається, що є в базі","textPreview":"Як агент дізнається, що є в базі","textChars":32,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/mp8ru18j","slide":13,"bbox":[55,200,250,270]}
+{"kind":"shape","id":"sh/nq1s3694","slide":13,"bbox":[75,222,34,34]}
+{"kind":"textbox","id":"sh/8ra9wbqp","slide":13,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[75,223,34,32]}
+{"kind":"textbox","id":"sh/9sja5g7a","slide":13,"text":"list_tables","textPreview":"list_tables","textChars":11,"textLines":1,"bbox":[73,290,214,44]}
+{"kind":"textbox","id":"sh/2torih8f","slide":13,"text":"отримує назви й описи таблиць","textPreview":"отримує назви й описи таблиць","textChars":29,"textLines":1,"bbox":[75,360,210,78]}
+{"kind":"shape","id":"sh/3ux8rm90","slide":13,"bbox":[355,200,250,270]}
+{"kind":"shape","id":"sh/fit0jipc","slide":13,"bbox":[375,222,34,34]}
+{"kind":"textbox","id":"sh/uhkjad8r","slide":13,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[375,223,34,32]}
+{"kind":"textbox","id":"sh/hkbils72","slide":13,"text":"describe_table","textPreview":"describe_table","textChars":14,"textLines":1,"bbox":[373,290,214,44]}
+{"kind":"textbox","id":"sh/gj21cnqx","slide":13,"text":"читає колонки, типи, зв’язки й коментарі","textPreview":"читає колонки, типи, зв’язки й коментарі","textChars":40,"textLines":1,"bbox":[375,360,210,78]}
+{"kind":"shape","id":"sh/7u90fip0","slide":13,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/6t0j6d8f","slide":13,"bbox":[655,200,250,270]}
+{"kind":"shape","id":"sh/tgrihs76","slide":13,"bbox":[675,222,34,34]}
+{"kind":"textbox","id":"sh/svi18nql","slide":13,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[675,223,34,32]}
+{"kind":"textbox","id":"sh/jq90byp4","slide":13,"text":"Claude","textPreview":"Claude","textChars":6,"textLines":1,"bbox":[673,290,214,44]}
+{"kind":"textbox","id":"sh/ipgj2t8j","slide":13,"text":"обирає потрібні таблиці та поля","textPreview":"обирає потрібні таблиці та поля","textChars":31,"textLines":1,"bbox":[675,360,210,78]}
+{"kind":"shape","id":"sh/mlgjetsb","slide":13,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/nmpknytw","slide":13,"bbox":[955,200,250,270]}
+{"kind":"shape","id":"sh/ony1g3ah","slide":13,"bbox":[975,222,34,34]}
+{"kind":"textbox","id":"sh/9o72p8b2","slide":13,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[975,223,34,32]}
+{"kind":"textbox","id":"sh/apgjidsn","slide":13,"text":"run_sql","textPreview":"run_sql","textChars":7,"textLines":1,"bbox":[973,290,214,44]}
+{"kind":"textbox","id":"sh/vq9krits","slide":13,"text":"складає і виконує SELECT","textPreview":"складає і виконує SELECT","textChars":24,"textLines":1,"bbox":[975,360,210,78]}
+{"kind":"shape","id":"sh/wri1knad","slide":13,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/xsr2t8by","slide":13,"text":"Спочатку агент читає схему, потім складає SQL","textPreview":"Спочатку агент читає схему, потім складає SQL","textChars":45,"textLines":1,"bbox":[230,535,820,44]}
+{"kind":"notes","id":"nt/52kz9d","slide":13,"text":"Таймінг: 13:00–14:15\n\nКоли користувач питає «Що є в цій базі?», агент викликає list_tables. Для конкретного питання він читає структуру потрібних таблиць через describe_table. Лише після цього складає SELECT.\n\nСаме описи таблиць, колонок і зв’язків дають моделі контекст про дані."}
+{"kind":"slide","id":"sl/mmg3l5","slide":14,"title":"14","textShapes":15}
+{"kind":"shape","id":"sh/nats7yxw","slide":14,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/8b29g3eh","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/9cba98f2","slide":14,"text":"Один запит проходить шість видимих кроків","textPreview":"Один запит проходить шість видимих кроків","textChars":41,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/yl0ratwf","slide":14,"bbox":[65,240,170,170]}
+{"kind":"shape","id":"sh/zm9s3yxk","slide":14,"bbox":[83,258,28,28]}
+{"kind":"textbox","id":"sh/0729c3e5","slide":14,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[83,259,28,26]}
+{"kind":"textbox","id":"sh/l8ba58fq","slide":14,"text":"Питання","textPreview":"Питання","textChars":7,"textLines":1,"bbox":[80,315,140,58]}
+{"kind":"shape","id":"sh/qh0r6tw3","slide":14,"bbox":[267,240,170,170]}
+{"kind":"shape","id":"sh/bi9szexo","slide":14,"bbox":[285,258,28,28]}
+{"kind":"textbox","id":"sh/3el8byho","slide":14,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[285,259,28,26]}
+{"kind":"textbox","id":"sh/2ds7it03","slide":14,"text":"Список таблиць","textPreview":"Список таблиць","textChars":14,"textLines":1,"bbox":[282,315,140,58]}
+{"kind":"shape","id":"sh/pg3qdozu","slide":14,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/4fupk3i9","slide":14,"bbox":[469,240,170,170]}
+{"kind":"shape","id":"sh/ril8fyh0","slide":14,"bbox":[487,258,28,28]}
+{"kind":"textbox","id":"sh/qhc7mt0f","slide":14,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[487,259,28,26]}
+{"kind":"textbox","id":"sh/dk3qh8zq","slide":14,"text":"Опис схеми","textPreview":"Опис схеми","textChars":10,"textLines":1,"bbox":[484,315,140,58]}
+{"kind":"shape","id":"sh/cjupo3il","slide":14,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/7m1o3e1g","slide":14,"bbox":[671,240,170,170]}
+{"kind":"shape","id":"sh/6l87a90v","slide":14,"bbox":[689,258,28,28]}
+{"kind":"textbox","id":"sh/a1gbihkj","slide":14,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[689,259,28,26]}
+{"kind":"textbox","id":"sh/b2psbm14","slide":14,"text":"SELECT","textPreview":"SELECT","textChars":6,"textLines":1,"bbox":[686,315,140,58]}
+{"kind":"shape","id":"sh/w3ytkr2p","slide":14,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/x47adcja","slide":14,"bbox":[873,240,170,170]}
+{"kind":"shape","id":"sh/mdgbexkn","slide":14,"bbox":[891,258,28,28]}
+{"kind":"textbox","id":"sh/neps7218","slide":14,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[891,259,28,26]}
+{"kind":"textbox","id":"sh/ofytg72t","slide":14,"text":"Результат","textPreview":"Результат","textChars":9,"textLines":1,"bbox":[888,315,140,58]}
+{"kind":"shape","id":"sh/9g7a9cjy","slide":14,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/e9wraxkb","slide":14,"bbox":[1075,240,170,170]}
+{"kind":"shape","id":"sh/za5s321w","slide":14,"bbox":[1093,258,28,28]}
+{"kind":"textbox","id":"sh/h4vep03e","slide":14,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[1093,259,28,26]}
+{"kind":"textbox","id":"sh/g32dgvmt","slide":14,"text":"Пояснення","textPreview":"Пояснення","textChars":9,"textLines":1,"bbox":[1090,315,140,58]}
+{"kind":"shape","id":"sh/f2twnqlo","slide":14,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/u1kvel43","slide":14,"text":"Кожен виклик можна розгорнути й перевірити в інтерфейсі Claude","textPreview":"Кожен виклик можна розгорнути й перевірити в інтерфейсі Claude","textChars":62,"textLines":1,"bbox":[200,500,880,50]}
+{"kind":"notes","id":"nt/mmg3l5","slide":14,"text":"Таймінг: 14:15–15:30\n\nПоясніть спостережуваність: ми бачимо, який інструмент викликано, з якими аргументами та що він повернув.\n\nЦе не гарантує правильність відповіді, але робить помилку діагностованою."}
+{"kind":"slide","id":"sl/ka5khr","slide":15,"title":"15","textShapes":18}
+{"kind":"shape","id":"sh/o7m18nmh","slide":15,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/36d0f2lw","slide":15,"text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/254z6x4b","slide":15,"text":"П’ять інструментів: від схеми до прогнозу","textPreview":"П’ять інструментів: від схеми до прогнозу","textChars":41,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/h4vidsnq","slide":15,"bbox":[50,200,220,270]}
+{"kind":"shape","id":"sh/g32h4nml","slide":15,"bbox":[70,222,34,34]}
+{"kind":"textbox","id":"sh/fit0bi50","slide":15,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[70,223,34,32]}
+{"kind":"textbox","id":"sh/uhkz2d4f","slide":15,"text":"list_tables","textPreview":"list_tables","textChars":11,"textLines":1,"bbox":[68,295,184,48]}
+{"kind":"textbox","id":"sh/tgbi98nu","slide":15,"text":"що є","textPreview":"що є","textChars":4,"textLines":1,"bbox":[68,375,184,48]}
+{"kind":"shape","id":"sh/sf2h03m9","slide":15,"bbox":[296,200,220,270]}
+{"kind":"shape","id":"sh/2pgfy5gr","slide":15,"bbox":[316,222,34,34]}
+{"kind":"textbox","id":"sh/3qpw7ahc","slide":15,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[316,223,34,32]}
+{"kind":"textbox","id":"sh/oryx0fyx","slide":15,"text":"describe_table","textPreview":"describe_table","textChars":14,"textLines":1,"bbox":[314,295,184,48]}
+{"kind":"textbox","id":"sh/pc7e9kzi","slide":15,"text":"як влаштовано","textPreview":"як влаштовано","textChars":13,"textLines":1,"bbox":[314,375,184,48]}
+{"kind":"shape","id":"sh/elwvulgv","slide":15,"bbox":[542,200,220,270]}
+{"kind":"shape","id":"sh/fmpw3qhg","slide":15,"bbox":[562,222,34,34]}
+{"kind":"textbox","id":"sh/gnydwvy1","slide":15,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[562,223,34,32]}
+{"kind":"textbox","id":"sh/1o7e50z6","slide":15,"text":"run_sql","textPreview":"run_sql","textChars":7,"textLines":1,"bbox":[560,295,184,48]}
+{"kind":"textbox","id":"sh/6hwvqlgj","slide":15,"text":"прочитати дані","textPreview":"прочитати дані","textChars":14,"textLines":1,"bbox":[560,375,184,48]}
+{"kind":"shape","id":"sh/ri5wzqh4","slide":15,"bbox":[788,200,220,270]}
+{"kind":"shape","id":"sh/v2lc7mxw","slide":15,"bbox":[808,222,34,34]}
+{"kind":"textbox","id":"sh/u1sbyhwb","slide":15,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[808,223,34,32]}
+{"kind":"textbox","id":"sh/ho3u9wf2","slide":15,"text":"save_report","textPreview":"save_report","textChars":11,"textLines":1,"bbox":[806,295,184,48]}
+{"kind":"textbox","id":"sh/wnut0reh","slide":15,"text":"зберегти HTML","textPreview":"зберегти HTML","textChars":13,"textLines":1,"bbox":[806,375,184,48]}
+{"kind":"shape","id":"sh/jqlcbmx8","slide":15,"bbox":[1034,200,220,270]}
+{"kind":"shape","id":"sh/ipcb21wn","slide":15,"bbox":[1054,222,34,34]}
+{"kind":"textbox","id":"sh/5s3udwfy","slide":15,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1054,223,34,32]}
+{"kind":"textbox","id":"sh/4rut4ret","slide":15,"text":"predict_churn","textPreview":"predict_churn","textChars":13,"textLines":1,"bbox":[1052,295,184,48]}
+{"kind":"textbox","id":"sh/zuhsz2xo","slide":15,"text":"оцінити ризик","textPreview":"оцінити ризик","textChars":13,"textLines":1,"bbox":[1052,375,184,48]}
+{"kind":"textbox","id":"sh/yt8bqxwj","slide":15,"text":"Окремого інструмента «побудувати графік» навмисно немає","textPreview":"Окремого інструмента «побудувати графік» навмисно немає","textChars":55,"textLines":1,"bbox":[160,535,960,44]}
+{"kind":"notes","id":"nt/ka5khr","slide":15,"text":"Таймінг: 15:30–17:00\n\nШвидко поясніть усі п’ять.\n\nsave_report не генерує звіт. Claude створює HTML, а інструмент лише безпечно зберігає файл. Це залишає моделі свободу оформлення, але обмежує файлову дію."}
+{"kind":"slide","id":"sl/cz1ijo","slide":16,"title":"16","textShapes":7}
+{"kind":"shape","id":"sh/a907ixkr","slide":16,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/xcrqtcji","slide":16,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/wbipk72x","slide":16,"text":"Docstring у Python пояснює моделі, коли викликати інструмент","textPreview":"Docstring у Python пояснює моделі, коли викликати інструмент","textChars":60,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/n6p8nilg","slide":16,"bbox":[90,170,690,380]}
+{"kind":"textbox","id":"sh/m5g7exkv","slide":16,"text":"PYTHON","textPreview":"PYTHON","textChars":6,"textLines":1,"bbox":[106,184,90,28]}
+{"kind":"textbox","id":"sh/987qps36","slide":16,"text":"def run_sql(query: str, limit: int = 200):\n    \"\"\"Виконує лише SELECT-запит.\n\n    Спершу перевір схему таблиці.\n    Повертає колонки, рядки й ознаку truncation.\n    \"\"\"","textPreview":"def run_sql(query: str, limit: int = 200): |     \"\"\"Виконує лише SELECT-запит. |  |     Спершу перевір схему таблиці. |     Повертає коло...","textChars":168,"textLines":6,"bbox":[110,224,650,310]}
+{"kind":"shape","id":"sh/o7ypgn2l","slide":16,"bbox":[845,205,330,280]}
+{"kind":"textbox","id":"sh/72t8zm1k","slide":16,"text":"КЛЮЧОВА ІДЕЯ","textPreview":"КЛЮЧОВА ІДЕЯ","textChars":12,"textLines":1,"bbox":[865,223,290,24]}
+{"kind":"textbox","id":"sh/61krqhkz","slide":16,"text":"Опис = інтерфейс для AI","textPreview":"Опис = інтерфейс для AI","textChars":23,"textLines":1,"bbox":[865,261,290,62]}
+{"kind":"textbox","id":"sh/k3650r2p","slide":16,"text":"Назва функції замала. Модель читає призначення, обмеження та формат результату.","textPreview":"Назва функції замала. Модель читає призначення, обмеження та формат результату.","textChars":79,"textLines":1,"bbox":[865,327,290,140]}
+{"kind":"notes","id":"nt/cz1ijo","slide":16,"text":"Таймінг: 17:00–18:00\n\nПокажіть docstring як частину продукту, а не коментар «для програміста». Якщо опис нечіткий, модель вибиратиме інструмент гірше.\n\nУ workshop-start ми дописуємо функції, але докстрінги вже задають очікувану поведінку."}
+{"kind":"slide","id":"sl/h84oj5","slide":17,"title":"17","textShapes":7}
+{"kind":"shape","id":"sh/udkb2xsj","slide":17,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/hgvaxcru","slide":17,"text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/gf2t47ap","slide":17,"text":"Знання про дані живуть поруч із даними","textPreview":"Знання про дані живуть поруч із даними","textChars":38,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/7qtsr29s","slide":17,"bbox":[90,190,640,250]}
+{"kind":"textbox","id":"sh/6pkbyxs7","slide":17,"text":"POSTGRESQL","textPreview":"POSTGRESQL","textChars":10,"textLines":1,"bbox":[106,204,130,28]}
+{"kind":"textbox","id":"sh/tcbatsry","slide":17,"text":"COMMENT ON COLUMN lessons.status IS\n'completed — урок відбувся;\ncancelled_by_parent — не рахувати як проведений';","textPreview":"COMMENT ON COLUMN lessons.status IS | 'completed — урок відбувся; | cancelled_by_parent — не рахувати як проведений';","textChars":113,"textLines":3,"bbox":[110,244,600,180]}
+{"kind":"shape","id":"sh/sb2t0nad","slide":17,"bbox":[840,190,330,250]}
+{"kind":"textbox","id":"sh/jm9sni9w","slide":17,"text":"describe_table","textPreview":"describe_table","textChars":14,"textLines":1,"bbox":[875,225,260,42]}
+{"kind":"textbox","id":"sh/il0rudsb","slide":17,"text":"повертає коментар моделі разом із типами, зв’язками та прикладами","textPreview":"повертає коментар моделі разом із типами, зв’язками та прикладами","textChars":65,"textLines":1,"bbox":[875,300,260,100]}
+{"kind":"textbox","id":"sh/szyxo3a1","slide":17,"text":"Менше прихованих правил у промпті","textPreview":"Менше прихованих правил у промпті","textChars":33,"textLines":1,"bbox":[260,515,760,45]}
+{"kind":"notes","id":"nt/h84oj5","slide":17,"text":"Таймінг: 18:00–19:00\n\nПоясніть «пастку» status: без коментаря модель може порахувати всі заплановані уроки як проведені.\n\nПеревага: визначення знаходиться там, де його бачить і людина, і інструмент. Зміна схеми не вимагає переписувати великий системний промпт."}
+{"kind":"slide","id":"sl/s2czh4","slide":18,"title":"18","textShapes":12}
+{"kind":"shape","id":"sh/ahkv2t0j","slide":18,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/xkbex8zu","slide":18,"text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/wj2d43ip","slide":18,"text":"Три шари не дають агенту зіпсувати базу","textPreview":"Три шари не дають агенту зіпсувати базу","textChars":39,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/jmdwzih0","slide":18,"bbox":[90,205,330,250]}
+{"kind":"textbox","id":"sh/yl4v6d0f","slide":18,"text":"ШАР 1","textPreview":"ШАР 1","textChars":5,"textLines":1,"bbox":[110,223,290,24]}
+{"kind":"textbox","id":"sh/5ove1sz6","slide":18,"text":"SQL guard","textPreview":"SQL guard","textChars":9,"textLines":1,"bbox":[110,261,290,62]}
+{"kind":"textbox","id":"sh/knmd8nil","slide":18,"text":"пропускає SELECT і WITH","textPreview":"пропускає SELECT і WITH","textChars":23,"textLines":1,"bbox":[110,340,290,97]}
+{"kind":"shape","id":"sh/7adw3ihc","slide":18,"bbox":[485,205,330,250]}
+{"kind":"textbox","id":"sh/6p4vad0r","slide":18,"text":"ШАР 2","textPreview":"ШАР 2","textChars":5,"textLines":1,"bbox":[505,223,290,24]}
+{"kind":"textbox","id":"sh/8jaxkbex","slide":18,"text":"read-only роль","textPreview":"read-only роль","textChars":14,"textLines":1,"bbox":[505,261,290,62]}
+{"kind":"textbox","id":"sh/9kjetgvi","slide":18,"text":"PostgreSQL відхиляє запис","textPreview":"PostgreSQL відхиляє запис","textChars":25,"textLines":1,"bbox":[505,340,290,97]}
+{"kind":"shape","id":"sh/mhsfilw7","slide":18,"bbox":[880,205,330,250]}
+{"kind":"textbox","id":"sh/7i1wrqdc","slide":18,"text":"ШАР 3","textPreview":"ШАР 3","textChars":5,"textLines":1,"bbox":[900,223,290,24]}
+{"kind":"textbox","id":"sh/w7uxove9","slide":18,"text":"audit_log","textPreview":"audit_log","textChars":9,"textLines":1,"bbox":[900,261,290,62]}
+{"kind":"textbox","id":"sh/h83yx0vu","slide":18,"text":"зберігає успіхи й помилки","textPreview":"зберігає успіхи й помилки","textChars":25,"textLines":1,"bbox":[900,340,290,97]}
+{"kind":"textbox","id":"sh/u5cfmlw3","slide":18,"text":"Справжній бар’єр — права бази, а guard дає зрозумілу помилку раніше","textPreview":"Справжній бар’єр — права бази, а guard дає зрозумілу помилку раніше","textChars":67,"textLines":1,"bbox":[140,530,1000,56]}
+{"kind":"notes","id":"nt/s2czh4","slide":18,"text":"Таймінг: 19:00–20:30\n\nПідкресліть різницю між зручністю та безпекою. Guard ловить очевидний DELETE і пояснює моделі, що дозволено. Але остаточно захищає роль analyst_ro у PostgreSQL.\n\nКоманда для демонстрації: python scripts/prove_readonly.py. Вона обходить сервер і доводить, що сама база відмовляє у записі."}
+{"kind":"slide","id":"sl/8drs50","slide":19,"title":"19","textShapes":10}
+{"kind":"shape","id":"sh/sf658rqh","slide":19,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/rexozmpc","slide":19,"text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/qd4n6h8r","slide":19,"text":"Карта репозиторію: де що лежить","textPreview":"Карта репозиторію: де що лежить","textChars":31,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/14f65w7e","slide":19,"bbox":[70,150,710,465]}
+{"kind":"textbox","id":"sh/0j65cb6t","slide":19,"text":"ПАПКИ","textPreview":"ПАПКИ","textChars":5,"textLines":1,"bbox":[86,164,88,28]}
+{"kind":"textbox","id":"sh/fixo36p8","slide":19,"text":"data-analyst-agent/\n├─ server/        MCP-сервер та інструменти\n├─ db/            схема, роль, демо-дані\n├─ ml/            навчання й model.pkl\n├─ tests/         перевірки поведінки\n├─ docs/          setup, deploy, next steps\n├─ deploy/        Dockerfile і старт у хмарі\n├─ docker-compose.yml\n└─ railway.toml","textPreview":"data-analyst-agent/ | ├─ server/        MCP-сервер та інструменти | ├─ db/            схема, роль, демо-дані | ├─ ml/            навчання...","textChars":308,"textLines":9,"bbox":[90,204,670,395]}
+{"kind":"shape","id":"sh/ehona1on","slide":19,"bbox":[840,170,350,118]}
+{"kind":"textbox","id":"sh/h8vmtc7u","slide":19,"text":"server/main.py","textPreview":"server/main.py","textChars":14,"textLines":1,"bbox":[860,198,310,35]}
+{"kind":"textbox","id":"sh/wnm507qp","slide":19,"text":"реєструє 5 tools, обирає transport","textPreview":"реєструє 5 tools, обирає transport","textChars":34,"textLines":1,"bbox":[860,238,310,32]}
+{"kind":"shape","id":"sh/6lojqt4f","slide":19,"bbox":[840,315,350,118]}
+{"kind":"textbox","id":"sh/7mxkzyl0","slide":19,"text":"server/db.py","textPreview":"server/db.py","textChars":12,"textLines":1,"bbox":[860,343,310,35]}
+{"kind":"textbox","id":"sh/snq1s3ml","slide":19,"text":"пул з’єднань, guard, помилки","textPreview":"пул з’єднань, guard, помилки","textChars":28,"textLines":1,"bbox":[860,383,310,32]}
+{"kind":"shape","id":"sh/toz2183q","slide":19,"bbox":[840,460,350,118]}
+{"kind":"textbox","id":"sh/up8judkb","slide":19,"text":"server/features.py","textPreview":"server/features.py","textChars":18,"textLines":1,"bbox":[860,488,310,35]}
+{"kind":"textbox","id":"sh/fqhk3ilw","slide":19,"text":"єдине джерело ML-ознак","textPreview":"єдине джерело ML-ознак","textChars":22,"textLines":1,"bbox":[860,528,310,32]}
+{"kind":"notes","id":"nt/8drs50","slide":19,"text":"Таймінг: 20:30–22:15\n\nПроведіть екскурсію, не відкриваючи кожен файл.\n\nМнемоніка: server виконує, db зберігає, ml прогнозує, tests перевіряє, docs пояснює, deploy пакує.\n\nПокажіть, що railway.toml лежить у корені, бо Railway шукає конфіг саме там."}
+{"kind":"slide","id":"sl/j3og2g","slide":20,"title":"20","textShapes":11}
+{"kind":"shape","id":"sh/076p4f2x","slide":20,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/z6x8ba1c","slide":20,"text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/y5o725kr","slide":20,"text":"Чотири таблиці описують навчальний процес","textPreview":"Чотири таблиці описують навчальний процес","textChars":41,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/9czqhkje","slide":20,"bbox":[90,250,240,120]}
+{"kind":"shape","id":"sh/8b6p8fit","slide":20,"bbox":[390,250,240,120]}
+{"kind":"shape","id":"sh/7ax8fu18","slide":20,"bbox":[690,180,240,120]}
+{"kind":"shape","id":"sh/m9o76pk3","slide":20,"bbox":[990,180,200,120]}
+{"kind":"textbox","id":"sh/pgv650ja","slide":20,"text":"students","textPreview":"students","textChars":8,"textLines":1,"bbox":[120,278,180,34]}
+{"kind":"textbox","id":"sh/ofmpwv2p","slide":20,"text":"учень","textPreview":"учень","textChars":5,"textLines":1,"bbox":[120,326,180,28]}
+{"kind":"textbox","id":"sh/ax83mdsj","slide":20,"text":"subscriptions","textPreview":"subscriptions","textChars":13,"textLines":1,"bbox":[420,278,180,34]}
+{"kind":"textbox","id":"sh/byh4vi94","slide":20,"text":"план занять","textPreview":"план занять","textChars":11,"textLines":1,"bbox":[420,326,180,28]}
+{"kind":"textbox","id":"sh/czq5onap","slide":20,"text":"lessons","textPreview":"lessons","textChars":7,"textLines":1,"bbox":[720,208,180,34]}
+{"kind":"textbox","id":"sh/x0zmxsru","slide":20,"text":"уроки й статуси","textPreview":"уроки й статуси","textChars":15,"textLines":1,"bbox":[720,256,180,28]}
+{"kind":"textbox","id":"sh/y1snqdsf","slide":20,"text":"tutors","textPreview":"tutors","textChars":6,"textLines":1,"bbox":[1010,208,160,34]}
+{"kind":"textbox","id":"sh/z214zi90","slide":20,"text":"викладачі","textPreview":"викладачі","textChars":9,"textLines":1,"bbox":[1010,256,160,28]}
+{"kind":"shape","id":"sh/k3a5snal","slide":20,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/l4jm1sr6","slide":20,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/6psnux8r","slide":20,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/7q14329c","slide":20,"text":"Один учень має підписку, підписка має уроки, урок проводить репетитор","textPreview":"Один учень має підписку, підписка має уроки, урок проводить репетитор","textChars":69,"textLines":1,"bbox":[160,470,960,70]}
+{"kind":"notes","id":"nt/j3og2g","slide":20,"text":"Таймінг: 22:15–23:30\n\nПоясніть зв’язки як речення. Це легше за терміни «foreign key» і «one-to-many».\n\nПісля речення додайте: foreign key — це колонка, яка посилається на ідентифікатор у іншій таблиці."}
+{"kind":"slide","id":"sl/0se1g1","slide":21,"title":"21","textShapes":12}
+{"kind":"shape","id":"sh/nihcbyxs","slide":21,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/8jqd43yd","slide":21,"text":"21","textPreview":"21","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/9kzud8fy","slide":21,"text":"Платежі, підтримка й аудит доповнюють картину","textPreview":"Платежі, підтримка й аудит доповнюють картину","textChars":45,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/edoby9gb","slide":21,"bbox":[90,190,330,300]}
+{"kind":"textbox","id":"sh/zexc7ehw","slide":21,"text":"ТАБЛИЦЯ","textPreview":"ТАБЛИЦЯ","textChars":7,"textLines":1,"bbox":[110,208,290,24]}
+{"kind":"textbox","id":"sh/0fqt0jyh","slide":21,"text":"payments","textPreview":"payments","textChars":8,"textLines":1,"bbox":[110,246,290,62]}
+{"kind":"textbox","id":"sh/lgzu9of2","slide":21,"text":"успішні й невдалі списання\n\n90 днів для churn","textPreview":"успішні й невдалі списання |  | 90 днів для churn","textChars":45,"textLines":3,"bbox":[110,315,290,157]}
+{"kind":"shape","id":"sh/i9svadgf","slide":21,"bbox":[485,190,330,300]}
+{"kind":"textbox","id":"sh/ja1cjix0","slide":21,"text":"ТАБЛИЦЯ","textPreview":"ТАБЛИЦЯ","textChars":7,"textLines":1,"bbox":[505,208,290,24]}
+{"kind":"textbox","id":"sh/7uhobqp8","slide":21,"text":"support_tickets","textPreview":"support_tickets","textChars":15,"textLines":1,"bbox":[505,246,290,62]}
+{"kind":"textbox","id":"sh/mt8n2l83","slide":21,"text":"звернення учня\n\nсигнал незадоволення","textPreview":"звернення учня |  | сигнал незадоволення","textChars":36,"textLines":3,"bbox":[505,315,290,157]}
+{"kind":"shape","id":"sh/9wz6dg7e","slide":21,"bbox":[880,190,330,300]}
+{"kind":"textbox","id":"sh/8vq54vqt","slide":21,"text":"ТАБЛИЦЯ","textPreview":"ТАБЛИЦЯ","textChars":7,"textLines":1,"bbox":[900,208,290,24]}
+{"kind":"textbox","id":"sh/vyhofqpk","slide":21,"text":"audit_log","textPreview":"audit_log","textChars":9,"textLines":1,"bbox":[900,246,290,62]}
+{"kind":"textbox","id":"sh/ux8n6l8z","slide":21,"text":"всі виклики MCP\n\nхто, що, коли, результат","textPreview":"всі виклики MCP |  | хто, що, коли, результат","textChars":41,"textLines":3,"bbox":[900,315,290,157]}
+{"kind":"textbox","id":"sh/h0j6h07q","slide":21,"text":"Разом у демо 7 таблиць","textPreview":"Разом у демо 7 таблиць","textChars":22,"textLines":1,"bbox":[370,550,540,44]}
+{"kind":"notes","id":"nt/0se1g1","slide":21,"text":"Таймінг: 23:30–24:30\n\nПокажіть, що агент бачить не одну «таблицю уроків», а контекст клієнта. Платежі та тікети стають ознаками churn. audit_log не є бізнес-даними, це слід роботи системи."}
+{"kind":"slide","id":"sl/p7p31j","slide":22,"title":"22","textShapes":9}
+{"kind":"shape","id":"sh/zy9crqtk","slide":22,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/kjit0va5","slide":22,"text":"22","textPreview":"22","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/lkrutgba","slide":22,"text":"Локально є два способи отримати базу","textPreview":"Локально є два способи отримати базу","textChars":36,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/6l0b2lsv","slide":22,"bbox":[95,190,500,320]}
+{"kind":"textbox","id":"sh/7m9cvqtg","slide":22,"text":"НАЙШВИДШЕ","textPreview":"НАЙШВИДШЕ","textChars":9,"textLines":1,"bbox":[115,208,460,24]}
+{"kind":"textbox","id":"sh/8n2t4va1","slide":22,"text":"А. База від ведучої","textPreview":"А. База від ведучої","textChars":19,"textLines":1,"bbox":[115,246,460,62]}
+{"kind":"textbox","id":"sh/tobux0bm","slide":22,"text":"Вставити DATABASE_URL у .env\nDocker не потрібен","textPreview":"Вставити DATABASE_URL у .env | Docker не потрібен","textChars":47,"textLines":2,"bbox":[115,345,460,147]}
+{"kind":"shape","id":"sh/2pgbq1cr","slide":22,"bbox":[685,190,500,320]}
+{"kind":"textbox","id":"sh/nqpsj6tc","slide":22,"text":"БІЛЬШЕ КОНТРОЛЮ","textPreview":"БІЛЬШЕ КОНТРОЛЮ","textChars":15,"textLines":1,"bbox":[705,208,460,24]}
+{"kind":"textbox","id":"sh/fm9obilc","slide":22,"text":"Б. Своя база","textPreview":"Б. Своя база","textChars":12,"textLines":1,"bbox":[705,246,460,62]}
+{"kind":"textbox","id":"sh/el0n2xkr","slide":22,"text":"Запустити Docker Desktop\nВиконати make setup","textPreview":"Запустити Docker Desktop | Виконати make setup","textChars":44,"textLines":2,"bbox":[705,345,460,147]}
+{"kind":"textbox","id":"sh/18b6ds32","slide":22,"text":"Обидва варіанти дають серверу однаковий DATABASE_URL","textPreview":"Обидва варіанти дають серверу однаковий DATABASE_URL","textChars":52,"textLines":1,"bbox":[235,560,810,42]}
+{"kind":"notes","id":"nt/p7p31j","slide":22,"text":"Таймінг: 24:30–25:30\n\nЯкщо аудиторія зовсім нова, рекомендуйте варіант А для воркшопу. Варіант Б показуйте тим, хто хоче забрати повну локальну копію.\n\n.env — локальний файл із налаштуваннями й секретами. Він не потрапляє в Git."}
+{"kind":"slide","id":"sl/9al776","slide":23,"title":"23","textShapes":15}
+{"kind":"shape","id":"sh/cz6t0b69","slide":23,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/ryxs76po","slide":23,"text":"23","textPreview":"23","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/qdobyloj","slide":23,"text":"Чотири етапи до першого локального запиту","textPreview":"Чотири етапи до першого локального запиту","textChars":41,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/14zud076","slide":23,"bbox":[70,180,260,330]}
+{"kind":"shape","id":"sh/03qt4v6l","slide":23,"bbox":[92,205,34,34]}
+{"kind":"textbox","id":"sh/z2xsbqp0","slide":23,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[92,206,34,32]}
+{"kind":"textbox","id":"sh/e1ob2lof","slide":23,"text":"Завантажити","textPreview":"Завантажити","textChars":11,"textLines":1,"bbox":[92,270,216,48]}
+{"kind":"textbox","id":"sh/98zuh072","slide":23,"text":"git clone …\ncd data-analyst-agent","textPreview":"git clone … | cd data-analyst-agent","textChars":33,"textLines":2,"bbox":[92,360,216,95]}
+{"kind":"shape","id":"sh/o7qt8v6h","slide":23,"bbox":[370,180,260,330]}
+{"kind":"shape","id":"sh/qp8rmpoz","slide":23,"bbox":[392,205,34,34]}
+{"kind":"textbox","id":"sh/rqhsvupk","slide":23,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[392,206,34,32]}
+{"kind":"textbox","id":"sh/srq9oz65","slide":23,"text":"Ізолювати Python","textPreview":"Ізолювати Python","textChars":16,"textLines":1,"bbox":[392,270,216,48]}
+{"kind":"textbox","id":"sh/dszax47a","slide":23,"text":"python3 -m venv .venv\npip install -e \".[dev]\"","textPreview":"python3 -m venv .venv | pip install -e \".[dev]\"","textChars":45,"textLines":2,"bbox":[392,360,216,95]}
+{"kind":"shape","id":"sh/et8rq9ov","slide":23,"bbox":[670,180,260,330]}
+{"kind":"shape","id":"sh/fuhszupg","slide":23,"bbox":[692,205,34,34]}
+{"kind":"textbox","id":"sh/0vqtsz61","slide":23,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[692,206,34,32]}
+{"kind":"textbox","id":"sh/1wja147m","slide":23,"text":"Підготувати","textPreview":"Підготувати","textChars":11,"textLines":1,"bbox":[692,270,216,48]}
+{"kind":"textbox","id":"sh/uxore5or","slide":23,"text":"make setup\nmake doctor","textPreview":"make setup | make doctor","textChars":22,"textLines":2,"bbox":[692,360,216,95]}
+{"kind":"shape","id":"sh/vyxsnapc","slide":23,"bbox":[970,180,260,330]}
+{"kind":"shape","id":"sh/z2tov654","slide":23,"bbox":[992,205,34,34]}
+{"kind":"textbox","id":"sh/y1k7m14j","slide":23,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[992,206,34,32]}
+{"kind":"textbox","id":"sh/l4b6xgna","slide":23,"text":"Підключити","textPreview":"Підключити","textChars":10,"textLines":1,"bbox":[992,270,216,48]}
+{"kind":"textbox","id":"sh/k32pobmp","slide":23,"text":"make config\nперезапустити Claude","textPreview":"make config | перезапустити Claude","textChars":32,"textLines":2,"bbox":[992,360,216,95]}
+{"kind":"textbox","id":"sh/betorm5s","slide":23,"text":"make — короткі назви для довгих команд","textPreview":"make — короткі назви для довгих команд","textChars":38,"textLines":1,"bbox":[325,560,630,40]}
+{"kind":"notes","id":"nt/9al776","slide":23,"text":"Таймінг: 25:30–26:30\n\nНе читайте команди по символах. Поясніть їх призначення.\n\nvenv створює окреме Python-оточення. pip ставить залежності з pyproject.toml. make setup оркеструє Docker, seed і train. make config друкує конфіг із абсолютними шляхами."}
+{"kind":"slide","id":"sl/35ablt","slide":24,"title":"24","textShapes":8}
+{"kind":"shape","id":"sh/3mp8niho","slide":24,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/4ny9wni9","slide":24,"text":"24","textPreview":"24","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/5o7qpszu","slide":24,"text":"LIVE DEMO · 7 ХВ","textPreview":"LIVE DEMO · 7 ХВ","textChars":16,"textLines":1,"bbox":[72,52,190,34]}
+{"kind":"textbox","id":"sh/q9gryx0f","slide":24,"text":"Локальний MCP через stdio","textPreview":"Локальний MCP через stdio","textChars":25,"textLines":1,"bbox":[72,112,850,62]}
+{"kind":"shape","id":"sh/rap8rihk","slide":24,"bbox":[80,215,700,350]}
+{"kind":"textbox","id":"sh/sbi90ni5","slide":24,"text":"ПОКАЗАТИ НАЖИВО","textPreview":"ПОКАЗАТИ НАЖИВО","textChars":15,"textLines":1,"bbox":[96,229,180,28]}
+{"kind":"textbox","id":"sh/dcrqtszq","slide":24,"text":"make doctor\nmake config\n\n# після перезапуску Claude\nЩо є в цій базі?\nПобудуй графік уроків по місяцях\nЗбережи цей звіт файлом","textPreview":"make doctor | make config |  | # після перезапуску Claude | Що є в цій базі? | Побудуй графік уроків по місяцях | Збережи цей звіт файлом","textChars":125,"textLines":7,"bbox":[100,269,660,280]}
+{"kind":"shape","id":"sh/6tw7mt0v","slide":24,"bbox":[850,215,340,350]}
+{"kind":"textbox","id":"sh/7e58fy1g","slide":24,"text":"CHECKLIST","textPreview":"CHECKLIST","textChars":9,"textLines":1,"bbox":[870,233,300,24]}
+{"kind":"textbox","id":"sh/3eh8fm5s","slide":24,"text":"Ознаки успіху","textPreview":"Ознаки успіху","textChars":13,"textLines":1,"bbox":[870,271,300,62]}
+{"kind":"textbox","id":"sh/2d8r61o7","slide":24,"text":"✓ 7 таблиць\n✓ видно tool calls\n✓ SQL лише SELECT\n✓ звіт у reports/","textPreview":"✓ 7 таблиць | ✓ видно tool calls | ✓ SQL лише SELECT | ✓ звіт у reports/","textChars":66,"textLines":4,"bbox":[870,337,300,210]}
+{"kind":"notes","id":"nt/35ablt","slide":24,"text":"Таймінг: 26:30–33:30\n\nLIVE DEMO 1\n\n1. У терміналі покажіть make doctor. Якщо все green, не затримуйтесь.\n2. Запустіть make config і коротко покажіть, що шляхи абсолютні. Не копіюйте секрети на великий екран.\n3. У Claude Desktop відкрийте новий чат. Поставте «Що є в цій базі?».\n4. Розгорніть виклики інструментів. Назвіть list_tables і describe_table.\n5. Поставте запит про уроки по місяцях. Покажіть SQL.\n6. Попросіть зберегти звіт і відкрийте HTML.\n\nПлан Б: якщо Claude не підключився, запустіть make run і покажіть помилку дослівно; далі перейдіть до заздалегідь підготовленого чату."}
+{"kind":"slide","id":"sl/b1ftjf","slide":25,"title":"25","textShapes":10}
+{"kind":"shape","id":"sh/fql4vuls","slide":25,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/gru5ofmd","slide":25,"text":"25","textPreview":"25","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/hs3mxk3y","slide":25,"text":"Claude сам складає ланцюжок інструментів","textPreview":"Claude сам складає ланцюжок інструментів","textChars":40,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/61s3i54b","slide":25,"bbox":[80,175,290,170]}
+{"kind":"textbox","id":"sh/7214ralw","slide":25,"text":"«Хто з учнів у зоні ризику і що в них спільного?»","textPreview":"«Хто з учнів у зоні ризику і що в них спільного?»","textChars":49,"textLines":1,"bbox":[105,205,240,110]}
+{"kind":"shape","id":"sh/s3u5kfmh","slide":25,"bbox":[520,145,260,74]}
+{"kind":"textbox","id":"sh/t43mtk3m","slide":25,"text":"list_tables","textPreview":"list_tables","textChars":11,"textLines":1,"bbox":[545,163,210,34]}
+{"kind":"shape","id":"sh/qxwnu94f","slide":25,"bbox":[520,250,260,74]}
+{"kind":"textbox","id":"sh/ry543el0","slide":25,"text":"describe_table","textPreview":"describe_table","textChars":14,"textLines":1,"bbox":[545,268,210,34]}
+{"kind":"shape","id":"sh/b6l036xk","slide":25,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/q5sza1gz","slide":25,"bbox":[520,355,260,74]}
+{"kind":"textbox","id":"sh/d83i5gfq","slide":25,"text":"predict_churn","textPreview":"predict_churn","textChars":13,"textLines":1,"bbox":[545,373,210,34]}
+{"kind":"shape","id":"sh/c7uhcbe5","slide":25,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/zal076xg","slide":25,"bbox":[520,460,260,74]}
+{"kind":"textbox","id":"sh/y9czelwv","slide":25,"text":"run_sql","textPreview":"run_sql","textChars":7,"textLines":1,"bbox":[545,478,210,34]}
+{"kind":"shape","id":"sh/lc3i9gfm","slide":25,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/0buhgbe1","slide":25,"bbox":[900,230,300,180]}
+{"kind":"textbox","id":"sh/ny50bqxs","slide":25,"text":"Список учнів","textPreview":"Список учнів","textChars":12,"textLines":1,"bbox":[935,260,230,42]}
+{"kind":"textbox","id":"sh/mdwzilw7","slide":25,"text":"ймовірність\nтоп-фактори\nзастереження","textPreview":"ймовірність | топ-фактори | застереження","textChars":36,"textLines":3,"bbox":[935,325,230,68]}
+{"kind":"shape","id":"sh/i50bq9kr","slide":25,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/j69czelc","slide":25,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/47itsj2h","slide":25,"text":"Послідовність зміниться, якщо зміниться питання","textPreview":"Послідовність зміниться, якщо зміниться питання","textChars":47,"textLines":1,"bbox":[285,595,710,38]}
+{"kind":"notes","id":"nt/b1ftjf","slide":25,"text":"Таймінг: 33:30–35:00\n\nПісля демо закріпіть: код не містить цього workflow. Модель може пропустити run_sql, якщо predict_churn уже повернув достатньо пояснень. Це нормально, якщо відповідь обґрунтована."}
+{"kind":"slide","id":"sl/d4sjrj","slide":26,"title":"26","textShapes":10}
+{"kind":"shape","id":"sh/5kbil8ji","slide":26,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/ih0jad0r","slide":26,"text":"26","textPreview":"26","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/ji90ji1c","slide":26,"text":"workshop-start залишає місця для спільного коду","textPreview":"workshop-start залишає місця для спільного коду","textChars":47,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/wfi183i1","slide":26,"bbox":[110,190,440,300]}
+{"kind":"textbox","id":"sh/hgrih8jm","slide":26,"text":"РОБОЧИЙ СТАН","textPreview":"РОБОЧИЙ СТАН","textChars":12,"textLines":1,"bbox":[130,208,400,24]}
+{"kind":"textbox","id":"sh/ut0z6t0v","slide":26,"text":"main","textPreview":"main","textChars":4,"textLines":1,"bbox":[130,246,400,62]}
+{"kind":"textbox","id":"sh/vu90fy1g","slide":26,"text":"повне рішення\nусі тести мають проходити","textPreview":"повне рішення | усі тести мають проходити","textChars":39,"textLines":2,"bbox":[130,335,400,137]}
+{"kind":"shape","id":"sh/8ryh4jip","slide":26,"bbox":[730,190,440,300]}
+{"kind":"textbox","id":"sh/9sridoja","slide":26,"text":"НАВЧАЛЬНИЙ СТАН","textPreview":"НАВЧАЛЬНИЙ СТАН","textChars":15,"textLines":1,"bbox":[750,208,400,24]}
+{"kind":"textbox","id":"sh/5kz214j6","slide":26,"text":"workshop-start","textPreview":"workshop-start","textChars":14,"textLines":1,"bbox":[750,246,400,62]}
+{"kind":"textbox","id":"sh/kjqlsj2l","slide":26,"text":"каркас із TODO\nпишемо db.py, schema.py, sql.py, report.py","textPreview":"каркас із TODO | пишемо db.py, schema.py, sql.py, report.py","textChars":57,"textLines":2,"bbox":[750,335,400,137]}
+{"kind":"shape","id":"sh/jihkze10","slide":26,"bbox":[570,325,140,3]}
+{"kind":"textbox","id":"sh/ih83q9kv","slide":26,"text":"git checkout","textPreview":"git checkout","textChars":12,"textLines":1,"bbox":[570,280,140,35]}
+{"kind":"textbox","id":"sh/xgz2x4ja","slide":26,"text":"База й model.pkl не зникають під час перемикання гілки","textPreview":"База й model.pkl не зникають під час перемикання гілки","textChars":54,"textLines":1,"bbox":[220,550,840,40]}
+{"kind":"notes","id":"nt/d4sjrj","slide":26,"text":"Таймінг: 35:00–36:00\n\nПоясніть гілку як паралельну версію папки, але без дублювання файлів вручну.\n\nРятувальний шлях учасника: якщо відстав, git checkout main повертає повне рішення. Повернутися до каркаса можна пізніше."}
+{"kind":"slide","id":"sl/3b51f6","slide":27,"title":"27","textShapes":12}
+{"kind":"shape","id":"sh/fe1s7uh4","slide":27,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/gfat0zyp","slide":27,"text":"27","textPreview":"27","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/1gju94za","slide":27,"text":"Тести — автоматичний чеклист очікувань","textPreview":"Тести — автоматичний чеклист очікувань","textChars":38,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/3i1cbehg","slide":27,"bbox":[350,180,32,32]}
+{"kind":"textbox","id":"sh/ojat4jy1","slide":27,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[350,181,32,30]}
+{"kind":"textbox","id":"sh/pkjudoz6","slide":27,"text":"test_sql_guard.py","textPreview":"test_sql_guard.py","textChars":17,"textLines":1,"bbox":[405,174,340,36]}
+{"kind":"textbox","id":"sh/ilobqpgb","slide":27,"text":"не пропускає DELETE, але дозволяє чесний SELECT","textPreview":"не пропускає DELETE, але дозволяє чесний SELECT","textChars":47,"textLines":1,"bbox":[760,170,410,66]}
+{"kind":"shape","id":"sh/jmhszahw","slide":27,"bbox":[350,300,32,32]}
+{"kind":"textbox","id":"sh/7ihsfitg","slide":27,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[350,301,32,30]}
+{"kind":"textbox","id":"sh/6h8bmdcv","slide":27,"text":"test_tools_smoke.py","textPreview":"test_tools_smoke.py","textChars":19,"textLines":1,"bbox":[405,294,340,36]}
+{"kind":"textbox","id":"sh/tkzahsbm","slide":27,"text":"перевіряє форму відповіді кожного інструмента","textPreview":"перевіряє форму відповіді кожного інструмента","textChars":45,"textLines":1,"bbox":[760,290,410,66]}
+{"kind":"shape","id":"sh/sjqtonu1","slide":27,"bbox":[350,420,32,32]}
+{"kind":"textbox","id":"sh/juxsbytk","slide":27,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[350,421,32,30]}
+{"kind":"textbox","id":"sh/itoritcz","slide":27,"text":"prove_readonly.py","textPreview":"prove_readonly.py","textChars":17,"textLines":1,"bbox":[405,414,340,36]}
+{"kind":"textbox","id":"sh/5wzad8ba","slide":27,"text":"доводить обмеження прямо на рівні бази","textPreview":"доводить обмеження прямо на рівні бази","textChars":38,"textLines":1,"bbox":[760,410,410,66]}
+{"kind":"shape","id":"sh/kvqtk3u5","slide":27,"bbox":[420,550,440,64]}
+{"kind":"textbox","id":"sh/vqxs7yt8","slide":27,"text":"make test","textPreview":"make test","textChars":9,"textLines":1,"bbox":[440,570,400,24]}
+{"kind":"image","id":"im/juh4zat0","slide":27,"name":"","alt":"pytest","bbox":[95,190,180,180]}
+{"kind":"notes","id":"nt/3b51f6","slide":27,"text":"Таймінг: 36:00–37:00\n\npytest — інструмент, який запускає короткі сценарії перевірки. На workshop-start червоні тести — це карта того, що ще треба реалізувати. На main вони мають бути зеленими."}
+{"kind":"slide","id":"sl/qw0351","slide":28,"title":"28","textShapes":10}
+{"kind":"shape","id":"sh/j2x4j2pk","slide":28,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/4365c765","slide":28,"text":"28","textPreview":"28","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/54zmlc7q","slide":28,"text":"ML дає сигнал ризику, рішення лишається за людиною","textPreview":"ML дає сигнал ризику, рішення лишається за людиною","textChars":50,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/vyx4f2po","slide":28,"bbox":[320,180,240,180]}
+{"kind":"shape","id":"sh/wz658769","slide":28,"bbox":[650,180,240,180]}
+{"kind":"shape","id":"sh/h0fmhs7u","slide":28,"bbox":[980,180,220,180]}
+{"kind":"textbox","id":"sh/m9432do7","slide":28,"text":"14 ознак","textPreview":"14 ознак","textChars":8,"textLines":1,"bbox":[345,215,190,40]}
+{"kind":"textbox","id":"sh/7ad4bipc","slide":28,"text":"уроки, оцінки, платежі, тікети","textPreview":"уроки, оцінки, платежі, тікети","textChars":30,"textLines":1,"bbox":[345,278,190,64]}
+{"kind":"textbox","id":"sh/3yx0f6dw","slide":28,"text":"Gradient Boosting","textPreview":"Gradient Boosting","textChars":17,"textLines":1,"bbox":[675,215,190,56]}
+{"kind":"textbox","id":"sh/2xoj6lwb","slide":28,"text":"ROC AUC 0.776","textPreview":"ROC AUC 0.776","textChars":13,"textLines":1,"bbox":[675,300,190,32]}
+{"kind":"textbox","id":"sh/pkfihgvm","slide":28,"text":"Людина","textPreview":"Людина","textChars":6,"textLines":1,"bbox":[1005,215,170,40]}
+{"kind":"textbox","id":"sh/oz618beh","slide":28,"text":"вирішує, кому і як допомогти","textPreview":"вирішує, кому і як допомогти","textChars":28,"textLines":1,"bbox":[1005,278,170,64]}
+{"kind":"shape","id":"sh/bmxkjqds","slide":28,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/qlojalw7","slide":28,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/doz2l0vy","slide":28,"text":"Прогноз: відтік у наступні 30 днів + три фактори для пояснення","textPreview":"Прогноз: відтік у наступні 30 днів + три фактори для пояснення","textChars":62,"textLines":1,"bbox":[175,465,930,70]}
+{"kind":"textbox","id":"sh/cnq1cved","slide":28,"text":"ЦЕ ПІДКАЗКА, НЕ ВИРОК","textPreview":"ЦЕ ПІДКАЗКА, НЕ ВИРОК","textChars":21,"textLines":1,"bbox":[440,565,400,36]}
+{"kind":"image","id":"im/f2p4zq5k","slide":28,"name":"","alt":"scikit-learn","bbox":[80,180,180,180]}
+{"kind":"notes","id":"nt/qw0351","slide":28,"text":"Таймінг: 37:00–38:30\n\nПоясніть, що модель навчається окремою командою make train і зберігається в ml/model.pkl. Сервер лише завантажує готовий файл.\n\n14 ознак дивляться тільки в минуле. Ціль — відтік у наступні 30 днів. У поточному файлі моделі ROC AUC = 0.776, дата навчання 2026-09-16.\n\nscikit-learn 1.7.2 та numpy 2.2.6 закріплено точними версіями, бо pickle залежить від оточення."}
+{"kind":"slide","id":"sl/xqs1ic","slide":29,"title":"29","textShapes":9}
+{"kind":"shape","id":"sh/rmtkrqdc","slide":29,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/sn21kbux","slide":29,"text":"29","textPreview":"29","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/dob2tgvi","slide":29,"text":"HTML-звіт легко відкрити й надіслати","textPreview":"HTML-звіт легко відкрити й надіслати","textChars":36,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/epk3mlc3","slide":29,"bbox":[120,200,330,260]}
+{"kind":"textbox","id":"sh/fqtkvqto","slide":29,"text":"<html>","textPreview":"<html>","textChars":6,"textLines":1,"bbox":[155,235,260,45]}
+{"kind":"textbox","id":"sh/0r2lovu9","slide":29,"text":"текст\nтаблиці\nграфіки","textPreview":"текст | таблиці | графіки","textChars":21,"textLines":3,"bbox":[155,305,260,110]}
+{"kind":"shape","id":"sh/1sv2x0be","slide":29,"bbox":[520,240,260,180]}
+{"kind":"textbox","id":"sh/2t43q5cz","slide":29,"text":"save_report","textPreview":"save_report","textChars":11,"textLines":1,"bbox":[550,275,200,42]}
+{"kind":"textbox","id":"sh/nedkzatk","slide":29,"text":"перевіряє HTML\nі безпечну назву","textPreview":"перевіряє HTML | і безпечну назву","textChars":31,"textLines":2,"bbox":[550,340,200,58]}
+{"kind":"shape","id":"sh/vq1svmx0","slide":29,"bbox":[860,200,300,260]}
+{"kind":"textbox","id":"sh/upsrmhgf","slide":29,"text":"reports/","textPreview":"reports/","textChars":8,"textLines":1,"bbox":[895,235,230,42]}
+{"kind":"textbox","id":"sh/hsjaxcf6","slide":29,"text":"уроки-по-місяцях.html","textPreview":"уроки-по-місяцях.html","textChars":21,"textLines":1,"bbox":[885,325,250,64]}
+{"kind":"shape","id":"sh/gra9o7yl","slide":29,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/7mhsr2x4","slide":29,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/618rixgj","slide":29,"text":"Інструмент зберігає результат, але не вирішує, що малювати","textPreview":"Інструмент зберігає результат, але не вирішує, що малювати","textChars":58,"textLines":1,"bbox":[210,545,860,45]}
+{"kind":"notes","id":"nt/xqs1ic","slide":29,"text":"Таймінг: 38:30–39:15\n\nHTML — звичайна веб-сторінка в одному файлі. Claude генерує вміст, save_report перевіряє, що це справді HTML, і створює безпечне ім’я в reports/."}
+{"kind":"slide","id":"sl/4jop01","slide":30,"title":"30","textShapes":9}
+{"kind":"shape","id":"sh/s7e50nal","slide":30,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/r6lo7i90","slide":30,"text":"30","textPreview":"30","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/q5cnydsv","slide":30,"text":"Локально Claude запускає сервер, у хмарі приходить за URL","textPreview":"Локально Claude запускає сервер, у хмарі приходить за URL","textChars":57,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/54365sra","slide":30,"bbox":[100,175,470,350]}
+{"kind":"textbox","id":"sh/4ju5wnap","slide":30,"text":"ЛОКАЛЬНО","textPreview":"ЛОКАЛЬНО","textChars":8,"textLines":1,"bbox":[120,193,430,24]}
+{"kind":"textbox","id":"sh/3ilo3i94","slide":30,"text":"stdio","textPreview":"stdio","textChars":5,"textLines":1,"bbox":[120,231,430,62]}
+{"kind":"textbox","id":"sh/ihcnudsj","slide":30,"text":"стандартний вхід і вихід програми\n\nClaude запускає Python-сервер на цьому ж комп’ютері","textPreview":"стандартний вхід і вихід програми |  | Claude запускає Python-сервер на цьому ж комп’ютері","textChars":86,"textLines":3,"bbox":[120,310,430,197]}
+{"kind":"shape","id":"sh/p076hcre","slide":30,"bbox":[710,175,470,350]}
+{"kind":"textbox","id":"sh/ofyp87at","slide":30,"text":"У ХМАРІ","textPreview":"У ХМАРІ","textChars":7,"textLines":1,"bbox":[730,193,430,24]}
+{"kind":"textbox","id":"sh/ulobm94b","slide":30,"text":"HTTP","textPreview":"HTTP","textChars":4,"textLines":1,"bbox":[730,231,430,62]}
+{"kind":"textbox","id":"sh/vmxsve5w","slide":30,"text":"сервер уже працює в Railway\n\nClaude підключається за адресою https://…/mcp","textPreview":"сервер уже працює в Railway |  | Claude підключається за адресою https://…/mcp","textChars":74,"textLines":3,"bbox":[730,310,430,197]}
+{"kind":"textbox","id":"sh/gnqtojmh","slide":30,"text":"Код інструментів той самий. Змінюється спосіб підключення","textPreview":"Код інструментів той самий. Змінюється спосіб підключення","textChars":57,"textLines":1,"bbox":[195,560,890,42]}
+{"kind":"notes","id":"nt/4jop01","slide":30,"text":"Таймінг: 39:15–40:45\n\nstdio означає standard input / standard output, тобто стандартний вхід і вихід програми. Claude Desktop запускає Python-процес на цьому ж комп’ютері та обмінюється з ним повідомленнями напряму. Вебадреса й відкритий порт не потрібні.\n\nУ хмарі сервер працює постійно. Клієнт звертається до нього через HTTP за адресою /mcp. MCP_TRANSPORT перемикає лише спосіб підключення."}
+{"kind":"slide","id":"sl/orms51","slide":31,"title":"31","textShapes":11}
+{"kind":"shape","id":"sh/fahwf61o","slide":31,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/gbqdobi9","slide":31,"text":"31","textPreview":"31","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/1czehgju","slide":31,"text":"Railway збирає контейнер і дає MCP-адресу","textPreview":"Railway збирає контейнер і дає MCP-адресу","textChars":41,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/2d8vql0z","slide":31,"bbox":[65,190,250,250]}
+{"kind":"textbox","id":"sh/ofqxcbi5","slide":31,"text":"GitHub","textPreview":"GitHub","textChars":6,"textLines":1,"bbox":[90,330,200,40]}
+{"kind":"textbox","id":"sh/p0zelgzq","slide":31,"text":"код","textPreview":"код","textChars":3,"textLines":1,"bbox":[90,382,200,30]}
+{"kind":"shape","id":"sh/ih4veh0v","slide":31,"bbox":[365,190,250,250]}
+{"kind":"textbox","id":"sh/fq54fex8","slide":31,"text":"Railway","textPreview":"Railway","textChars":7,"textLines":1,"bbox":[390,330,200,40]}
+{"kind":"textbox","id":"sh/epw369wn","slide":31,"text":"build + run","textPreview":"build + run","textChars":11,"textLines":1,"bbox":[390,382,200,30]}
+{"kind":"shape","id":"sh/1s7mhofe","slide":31,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/0ryl8jet","slide":31,"bbox":[665,190,250,250]}
+{"kind":"textbox","id":"sh/q1w32pgr","slide":31,"text":"Контейнер","textPreview":"Контейнер","textChars":9,"textLines":1,"bbox":[690,330,200,40]}
+{"kind":"textbox","id":"sh/don2d4f2","slide":31,"text":"Python MCP","textPreview":"Python MCP","textChars":10,"textLines":1,"bbox":[690,382,200,30]}
+{"kind":"shape","id":"sh/snel4zyx","slide":31,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/3ylk7ux0","slide":31,"bbox":[965,190,250,250]}
+{"kind":"textbox","id":"sh/6tc3ap0n","slide":31,"text":"/mcp","textPreview":"/mcp","textChars":4,"textLines":1,"bbox":[990,330,200,40]}
+{"kind":"textbox","id":"sh/7ul4juhs","slide":31,"text":"публічний URL","textPreview":"публічний URL","textChars":13,"textLines":1,"bbox":[990,382,200,30]}
+{"kind":"shape","id":"sh/8vulcfid","slide":31,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/tw3mlkzy","slide":31,"bbox":[470,505,340,90]}
+{"kind":"textbox","id":"sh/vyl4nuh4","slide":31,"text":"База живе окремо в мережі","textPreview":"База живе окремо в мережі","textChars":25,"textLines":1,"bbox":[575,530,210,34]}
+{"kind":"shape","id":"sh/gzu5gzip","slide":31,"bbox":[0,0,0,0]}
+{"kind":"image","id":"im/6tg3qlg7","slide":31,"name":"","alt":"GitHub","bbox":[143,218,94,94]}
+{"kind":"image","id":"im/uhgnu5g3","slide":31,"name":"","alt":"Railway","bbox":[443,218,94,94]}
+{"kind":"image","id":"im/c3m90ra9","slide":31,"name":"","alt":"Контейнер","bbox":[743,218,94,94]}
+{"kind":"image","id":"im/l8vadgrq","slide":31,"name":"","alt":"/mcp","bbox":[1043,218,94,94]}
+{"kind":"image","id":"im/xgri5cfu","slide":31,"name":"","alt":"PostgreSQL","bbox":[495,520,60,60]}
+{"kind":"notes","id":"nt/orms51","slide":31,"text":"Таймінг: 40:45–42:30\n\nRailway стежить за GitHub, читає railway.toml, будує образ через deploy/Dockerfile і запускає контейнер.\n\nБаза мусить бути доступна з інтернету, наприклад Neon або PostgreSQL у Railway. Локальний Docker на ноутбуці з хмари недосяжний.\n\nДжерело: https://docs.railway.com/deployments/reference"}
+{"kind":"slide","id":"sl/4wf1ba","slide":32,"title":"32","textShapes":19}
+{"kind":"shape","id":"sh/9gbe1wnq","slide":32,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/mt0f6h4f","slide":32,"text":"32","textPreview":"32","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/7u9wzm50","slide":32,"text":"LIVE DEMO · 6 ХВ","textPreview":"LIVE DEMO · 6 ХВ","textChars":16,"textLines":1,"bbox":[72,52,190,34]}
+{"kind":"textbox","id":"sh/krix47m9","slide":32,"text":"Деплой на Railway","textPreview":"Деплой на Railway","textChars":17,"textLines":1,"bbox":[72,112,850,62]}
+{"kind":"shape","id":"sh/lsrexcnu","slide":32,"bbox":[55,220,215,300]}
+{"kind":"shape","id":"sh/yp0f2x43","slide":32,"bbox":[73,240,30,30]}
+{"kind":"textbox","id":"sh/zq9wv25o","slide":32,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[73,241,30,28]}
+{"kind":"textbox","id":"sh/cnyx07md","slide":32,"text":"Deploy from GitHub","textPreview":"Deploy from GitHub","textChars":18,"textLines":1,"bbox":[70,300,185,58]}
+{"kind":"textbox","id":"sh/xo7etcny","slide":32,"text":"repo + main","textPreview":"repo + main","textChars":11,"textLines":1,"bbox":[70,390,185,72]}
+{"kind":"shape","id":"sh/98jm9cf6","slide":32,"bbox":[300,220,215,300]}
+{"kind":"shape","id":"sh/87a5g7yl","slide":32,"bbox":[318,240,30,30]}
+{"kind":"textbox","id":"sh/n6h472x0","slide":32,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[318,241,30,28]}
+{"kind":"textbox","id":"sh/m58nexgf","slide":32,"text":"Variables","textPreview":"Variables","textChars":9,"textLines":1,"bbox":[315,300,185,58]}
+{"kind":"textbox","id":"sh/l4zm5sfu","slide":32,"text":"DATABASE_URL\nTRANSPORT=http","textPreview":"DATABASE_URL | TRANSPORT=http","textChars":27,"textLines":2,"bbox":[315,390,185,72]}
+{"kind":"shape","id":"sh/03qlcny9","slide":32,"bbox":[545,220,215,300]}
+{"kind":"shape","id":"sh/z2h43ixo","slide":32,"bbox":[563,240,30,30]}
+{"kind":"textbox","id":"sh/y183axg3","slide":32,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[563,241,30,28]}
+{"kind":"textbox","id":"sh/d0zm1sfy","slide":32,"text":"Generate Domain","textPreview":"Generate Domain","textChars":15,"textLines":1,"bbox":[560,300,185,58]}
+{"kind":"textbox","id":"sh/cz6l8nyd","slide":32,"text":"додати /mcp","textPreview":"додати /mcp","textChars":11,"textLines":1,"bbox":[560,390,185,72]}
+{"kind":"shape","id":"sh/4ja5on69","slide":32,"bbox":[790,220,215,300]}
+{"kind":"shape","id":"sh/pkjmhsnu","slide":32,"bbox":[808,240,30,30]}
+{"kind":"textbox","id":"sh/2hsnmdo3","slide":32,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[808,241,30,28]}
+{"kind":"textbox","id":"sh/3i14fi5o","slide":32,"text":"Logs","textPreview":"Logs","textChars":4,"textLines":1,"bbox":[805,300,185,58]}
+{"kind":"textbox","id":"sh/gfa5kn6x","slide":32,"text":"база відповідає\nсервер стартував","textPreview":"база відповідає | сервер стартував","textChars":32,"textLines":2,"bbox":[805,390,185,72]}
+{"kind":"shape","id":"sh/hgjmt8ni","slide":32,"bbox":[1035,220,215,300]}
+{"kind":"shape","id":"sh/uds3idor","slide":32,"bbox":[1053,240,30,30]}
+{"kind":"textbox","id":"sh/fe14ri5c","slide":32,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1053,241,30,28]}
+{"kind":"textbox","id":"sh/0bu5w76h","slide":32,"text":"Claude Connector","textPreview":"Claude Connector","textChars":16,"textLines":1,"bbox":[1050,300,185,58]}
+{"kind":"textbox","id":"sh/1cnmpcnm","slide":32,"text":"назва + URL","textPreview":"назва + URL","textChars":11,"textLines":1,"bbox":[1050,390,185,72]}
+{"kind":"textbox","id":"sh/vi9gbat0","slide":32,"text":"Не показуйте ADMIN_DATABASE_URL і не вмикайте SEED_ON_START без потреби","textPreview":"Не показуйте ADMIN_DATABASE_URL і не вмикайте SEED_ON_START без потреби","textChars":71,"textLines":1,"bbox":[135,575,1010,42]}
+{"kind":"notes","id":"nt/4wf1ba","slide":32,"text":"Таймінг: 42:30–48:30\n\nLIVE DEMO 2\n\n1. Відкрийте готовий проєкт Railway або створіть New Project → Deploy from GitHub repo.\n2. Покажіть, що railway.toml вказує deploy/Dockerfile.\n3. У Variables додайте рівно DATABASE_URL і MCP_TRANSPORT=http. Закрийте значення пароля від аудиторії.\n4. Settings → Networking → Generate Domain. До адреси додайте /mcp.\n5. У Logs знайдіть «База відповідає» і «Стартую MCP-сервер».\n6. Claude → Connectors → Add custom connector. Додайте URL і повторіть «Що є в цій базі?».\n\nВажливе попередження: адреса без auth публічна. Для реальних даних спершу виконайте deploy/AUTH.md.\n\nЯкщо відкриття /mcp у браузері дає Missing session ID, це очікувано: браузер не виконав MCP initialize."}
+{"kind":"slide","id":"sl/zf7gq1","slide":33,"title":"33","textShapes":13}
+{"kind":"shape","id":"sh/qlw3ep0b","slide":33,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/do7m94jm","slide":33,"text":"33","textPreview":"33","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/3y543u1k","slide":33,"text":"Перед роботою з реальними даними","textPreview":"Перед роботою з реальними даними","textChars":32,"textLines":1,"bbox":[72,48,1130,110]}
+{"kind":"shape","id":"sh/2xw3ap0z","slide":33,"bbox":[85,205,350,260]}
+{"kind":"textbox","id":"sh/pknm5kjq","slide":33,"text":"КРОК 1","textPreview":"КРОК 1","textChars":6,"textLines":1,"bbox":[105,223,310,24]}
+{"kind":"textbox","id":"sh/ojelcfi5","slide":33,"text":"Права ролей","textPreview":"Права ролей","textChars":11,"textLines":1,"bbox":[105,261,310,62]}
+{"kind":"textbox","id":"sh/ful4za1o","slide":33,"text":"окрема read-only роль і мінімально потрібний доступ","textPreview":"окрема read-only роль і мінімально потрібний доступ","textChars":51,"textLines":1,"bbox":[105,333,310,114]}
+{"kind":"shape","id":"sh/etc36503","slide":33,"bbox":[485,205,350,260]}
+{"kind":"textbox","id":"sh/4vqx0n61","slide":33,"text":"КРОК 2","textPreview":"КРОК 2","textChars":6,"textLines":1,"bbox":[505,223,310,24]}
+{"kind":"textbox","id":"sh/5wzy9sn6","slide":33,"text":"Автентифікація","textPreview":"Автентифікація","textChars":14,"textLines":1,"bbox":[505,261,310,62]}
+{"kind":"textbox","id":"sh/it8fyxov","slide":33,"text":"сервер перевіряє, хто може викликати інструменти","textPreview":"сервер перевіряє, хто може викликати інструменти","textChars":48,"textLines":1,"bbox":[505,333,310,114]}
+{"kind":"shape","id":"sh/juhw725g","slide":33,"bbox":[885,205,350,260]}
+{"kind":"textbox","id":"sh/wr6xwn6p","slide":33,"text":"КРОК 3","textPreview":"КРОК 3","textChars":6,"textLines":1,"bbox":[905,223,310,24]}
+{"kind":"textbox","id":"sh/hsze5sna","slide":33,"text":"Документація метрик","textPreview":"Документація метрик","textChars":19,"textLines":1,"bbox":[905,261,310,62]}
+{"kind":"textbox","id":"sh/upofudoj","slide":33,"text":"визначення, формула, фільтри, джерело та відповідальний","textPreview":"визначення, формула, фільтри, джерело та відповідальний","textChars":55,"textLines":1,"bbox":[905,333,310,114]}
+{"kind":"textbox","id":"sh/vqxw3i54","slide":33,"text":"Без опису метрик агент може правильно порахувати не ту цифру","textPreview":"Без опису метрик агент може правильно порахувати не ту цифру","textChars":60,"textLines":1,"bbox":[165,525,950,48]}
+{"kind":"textbox","id":"sh/gnax8769","slide":33,"text":"Питання?","textPreview":"Питання?","textChars":8,"textLines":1,"bbox":[430,598,420,48]}
+{"kind":"image","id":"im/50bqxwbq","slide":33,"name":"","alt":"Data Loves Academy","bbox":[970,30,220,54]}
+{"kind":"notes","id":"nt/zf7gq1","slide":33,"text":"Таймінг: 48:30–50:00\n\nДля реальних даних почніть із трьох речей.\n\nПерша: окрема роль бази з мінімальними правами. Друга: автентифікація на публічному MCP, щоб сервер розумів, хто підключився. Третя: словник метрик із визначенням, формулою, фільтрами, джерелом даних і відповідальним.\n\nДокументація метрик потрібна і людям, і агенту. Без неї технічно правильний SQL може відповідати на інше бізнес-питання.\n\nДеталі: docs/NEXT-STEPS.md, docs/DEPLOY.md, deploy/AUTH.md."}
+{"kind":"slide","id":"sl/dv38eq","slide":34,"title":"34","textShapes":5}
+{"kind":"shape","id":"sh/ri9wr6d4","slide":34,"bbox":[0,0,14,720]}
+{"kind":"textbox","id":"sh/sjid0bup","slide":34,"text":"34","textPreview":"34","textChars":2,"textLines":1,"bbox":[1192,666,35,20]}
+{"kind":"textbox","id":"sh/idgvuhcn","slide":34,"text":"Матеріали\nворкшопу","textPreview":"Матеріали | воркшопу","textChars":18,"textLines":2,"bbox":[72,165,590,135]}
+{"kind":"textbox","id":"sh/jepwnmd8","slide":34,"text":"Репозиторій, доступ до навчальної бази та інструкції для Windows і macOS","textPreview":"Репозиторій, доступ до навчальної бази та інструкції для Windows і macOS","textChars":72,"textLines":1,"bbox":[76,330,560,105]}
+{"kind":"shape","id":"sh/4fidwrut","slide":34,"bbox":[72,480,565,96]}
+{"kind":"textbox","id":"sh/5grepwve","slide":34,"text":"База доступна до 24 вересня 2026 включно","textPreview":"База доступна до 24 вересня 2026 включно","textChars":40,"textLines":1,"bbox":[96,500,517,56]}
+{"kind":"shape","id":"sh/upgvqhcr","slide":34,"bbox":[760,90,450,450]}
+{"kind":"textbox","id":"sh/zahsb2hw","slide":34,"text":"Відскануйте камерою телефона","textPreview":"Відскануйте камерою телефона","textChars":28,"textLines":1,"bbox":[760,580,450,38]}
+{"kind":"image","id":"im/wvihk329","slide":34,"name":"","alt":"Data Loves Academy","bbox":[72,42,270,65]}
+{"kind":"image","id":"im/y1gzat4b","slide":34,"name":"","alt":"QR-код на сторінку матеріалів воркшопу","bbox":[780,110,410,410]}
+{"kind":"notes","id":"nt/dv38eq","slide":34,"text":"Сторінка матеріалів для учасників:\nhttps://hannapylieva.notion.site/3de94835849480c58b37c95fd65fa978?source=copy_link\n\nНа сторінці є репозиторій, місце для DATABASE_URL та інструкції встановлення Git, Python і Claude Desktop для Windows та macOS."}

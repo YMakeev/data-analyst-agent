@@ -5,8 +5,8 @@
 -- а не захист: будь-який парсер можна обійти. Захист ось тут: права, яких просто
 -- немає. Навіть якщо запит пролізе повз guard, база відмовить.
 --
--- На воркшопі це показується наживо: просимо Claude видалити таблицю.
--- Він щиро намагається — і отримує permission denied.
+-- Переконатись у цьому можна самому: python scripts/prove_readonly.py
+-- Скрипт іде в базу під цією роллю й намагається зіпсувати дані.
 
 CREATE ROLE analyst_ro WITH LOGIN PASSWORD 'analyst_ro_pwd';
 
@@ -22,8 +22,8 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO analyst_ro;
 GRANT INSERT ON audit_log TO analyst_ro;
 GRANT USAGE, SELECT ON SEQUENCE audit_log_id_seq TO analyst_ro;
 
--- Таблиці, створені пізніше (наприклад, коли учасник додасть свою),
--- теж автоматично будуть доступні на читання.
+-- Таблиці, створені пізніше, теж автоматично стануть доступними на
+-- читання — не доведеться згадувати про права щоразу.
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
     GRANT SELECT ON TABLES TO analyst_ro;
 

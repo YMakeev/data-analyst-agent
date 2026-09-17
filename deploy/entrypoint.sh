@@ -46,7 +46,7 @@ wait_for_db || exit 1
 if [ "$SEED_ON_START" = "1" ]; then
     echo "==> SEED_ON_START=1: розгортаю схему й роль"
     python db/bootstrap.py
-    echo "==> Заливаю демо-дані"
+    echo "==> Заповнюю базу синтетичними даними"
     python db/seed.py
 fi
 
