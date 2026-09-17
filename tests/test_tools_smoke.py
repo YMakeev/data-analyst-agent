@@ -1,8 +1,11 @@
-"""Смоук-тести інструментів на живій базі.
+"""Перевірка інструментів на живій базі.
 
-Мета вузька: кожен інструмент викликається і повертає ту форму, на яку
-розраховує модель. Плюс окремо перевіряємо те, що на воркшопі показується
-як головний аргумент — права бази не дають нічого зіпсувати.
+Кожен інструмент викликається по-справжньому й має повернути ту форму даних,
+на яку розраховує модель. Якщо форма зміниться, Claude не впаде — він просто
+почне відповідати гірше, і причину буде непросто знайти.
+
+Окремо перевіряється головне твердження всього проєкту: права бази не дають
+агенту нічого зіпсувати.
 """
 
 from __future__ import annotations
@@ -21,18 +24,33 @@ from tests.conftest import requires_db
 
 @requires_db
 def test_list_tables_returns_descriptions() -> None:
+    """Список таблиць приходить разом з описами.
+
+    Назва таблиці сама по собі мало що каже: `subscriptions` — це підписки
+    на що і в якому вигляді? Опис поруч із назвою — це те, з чого Claude
+    розуміє, про який бізнес ідеться, ще до першого запиту.
+    """
     result = list_tables()
     assert "error" not in result
     names = {t["table"] for t in result["tables"]}
     assert {"students", "lessons", "payments"} <= names
-    # Опис таблиці — це те, з чого модель розуміє предметну область.
+    # Майже в кожної таблиці має бути опис: без нього модель бачить
+    # лише голі назви.
     described = [t for t in result["tables"] if t["description"]]
     assert len(described) >= 6, "майже всі таблиці мають мати COMMENT ON TABLE"
 
 
 @requires_db
 def test_describe_table_exposes_the_traps() -> None:
-    """Пастки зі схеми мають доїжджати до моделі текстом, а не фольклором."""
+    """Особливості даних доїжджають до моделі текстом.
+
+    Знання на кшталт «тестові акаунти треба виключати» зазвичай живе в
+    голові аналітика й передається усно. Тут воно записане в описі колонки
+    в самій базі, і цей тест стежить, щоб опис справді доходив до моделі.
+
+    Якщо опис загубиться, помилки не буде — Claude просто почне відповідати
+    гірше, і причину знайти буде складно.
+    """
     lessons = describe_table("lessons")
     status = next(c for c in lessons["columns"] if c["name"] == "status")
     assert "completed" in status["description"]
@@ -47,6 +65,14 @@ def test_describe_table_exposes_the_traps() -> None:
 
 @requires_db
 def test_describe_unknown_table_suggests_alternatives() -> None:
+    """Помилка підказує, як виправитись.
+
+    Claude може звернутись до таблиці `lesson` замість `lessons`. Відповідь
+    «такої таблиці немає» заганяє його в глухий кут, а «такої немає, ось
+    наявні» дозволяє виправитись самому, без участі людини.
+
+    Текст помилки — це теж інтерфейс, просто для моделі, а не для очей.
+    """
     result = describe_table("lesson")
     assert "error" in result
     assert "lessons" in result["error"], "помилка має підказувати правильну назву"
@@ -54,6 +80,7 @@ def test_describe_unknown_table_suggests_alternatives() -> None:
 
 @requires_db
 def test_run_sql_returns_rows() -> None:
+    """Звичайний запит на читання відпрацьовує й повертає дані."""
     result = run_sql("SELECT status, COUNT(*) AS n FROM lessons GROUP BY status")
     assert "error" not in result
     assert set(result["columns"]) == {"status", "n"}
@@ -62,6 +89,12 @@ def test_run_sql_returns_rows() -> None:
 
 @requires_db
 def test_run_sql_limit_is_enforced_and_reported() -> None:
+    """Завеликий результат обрізається, і про це сказано вголос.
+
+    Без обмеження один необережний запит витягнув би сотні тисяч рядків.
+    Але просто обрізати мало: якщо не попередити, модель вважатиме частину
+    даних усіма даними й зробить висновок по шматку.
+    """
     result = run_sql("SELECT lesson_id FROM lessons", limit=10)
     assert result["row_count"] == 10
     assert result["truncated"] is True
@@ -70,7 +103,11 @@ def test_run_sql_limit_is_enforced_and_reported() -> None:
 
 @requires_db
 def test_run_sql_limit_survives_inner_limit() -> None:
-    """Обгортка має працювати і тоді, коли запит уже має власний LIMIT."""
+    """Обмеження не ламає запит, у якому вже є своє обмеження.
+
+    Якщо Claude сам попросив три рядки, він має отримати три, а не
+    зіткнутись із помилкою через те, що обмеження наклали двічі.
+    """
     result = run_sql("SELECT lesson_id FROM lessons ORDER BY lesson_id LIMIT 3", limit=100)
     assert result["row_count"] == 3
     assert result["truncated"] is False
@@ -79,15 +116,18 @@ def test_run_sql_limit_survives_inner_limit() -> None:
 @requires_db
 @pytest.mark.parametrize("query", ["DROP TABLE students", "DELETE FROM lessons"])
 def test_destructive_queries_are_refused(query: str) -> None:
+    """Запити, що нищать дані, не виконуються."""
     assert "error" in run_sql(query)
 
 
 @requires_db
 def test_database_role_itself_refuses_writes() -> None:
-    """Головний аргумент воркшопу, перевірений без участі guard.
+    """Захист перевірений без участі перевірок у коді.
 
-    Йдемо в базу напряму під роллю агента. Захист має триматись на правах
-    Postgres, а не на регулярних виразах у server/db.py.
+    Запити йдуть у базу напряму під тим самим користувачем, під яким працює
+    агент. Якщо цей тест колись почне падати, це означатиме, що захист
+    тримався на перевірках у Python, а не на правах у базі — тобто його
+    насправді не було.
     """
     with get_pool().connection() as conn:
         for sql in ("DELETE FROM lessons", "UPDATE students SET grade = 1",
@@ -99,6 +139,11 @@ def test_database_role_itself_refuses_writes() -> None:
 
 @requires_db
 def test_audit_log_records_both_success_and_failure() -> None:
+    """У журнал потрапляють і вдалі запити, і відхилені.
+
+    Журнал, у якому видно лише успішні звернення, майже марний: найцікавіше
+    зазвичай саме те, що відхилили. Тому записуються обидва випадки.
+    """
     before = fetch("SELECT COUNT(*) AS n FROM audit_log")[0]["n"]
     run_sql("SELECT 1 AS ok")
     run_sql("DROP TABLE students")
@@ -110,23 +155,35 @@ def test_audit_log_records_both_success_and_failure() -> None:
 
 
 def test_save_report_writes_file(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Звіт зберігається у файл з осмисленою назвою.
+
+    Назва важлива більше, ніж здається: якщо всі звіти називати однаково,
+    кожен наступний мовчки затре попередній.
+    """
     monkeypatch.setenv("REPORTS_DIR", str(tmp_path))
     result = save_report("<html><body><h1>Звіт</h1></body></html>", "Виручка по каналах")
     assert "error" not in result
     path = Path(result["path"])
     assert path.exists() and path.suffix == ".html"
-    # Назва не латиницею не має перетворювати файл на безликий report.html,
-    # інакше другий звіт затре перший.
+    # Назва українською теж має зберігатись у назві файлу, а не
+    # перетворюватись на безликий report.html.
     assert path.stem != "report"
 
 
 def test_save_report_rejects_non_html(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Замість звіту не можна підсунути звичайний текст."""
     monkeypatch.setenv("REPORTS_DIR", str(tmp_path))
     assert "error" in save_report("просто текст", "щось")
 
 
 @requires_db
 def test_predict_churn_scores_active_students() -> None:
+    """Модель повертає впорядкований список з поясненнями.
+
+    Найризикованіші мають бути зверху — інакше списком незручно
+    користуватись. І біля кожного учня має стояти причина: саме число
+    «ризик 0.87» людині нічого не дає, з ним неможливо нічого зробити.
+    """
     from server.tools.ml import MODEL_PATH, predict_churn
 
     if not MODEL_PATH.exists():

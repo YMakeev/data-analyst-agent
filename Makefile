@@ -1,4 +1,4 @@
-# Команди воркшопу. Якщо щось пішло не так — `make reset` і починаємо спочатку.
+# Команди проєкту. Якщо щось пішло не так — `make doctor` покаже, що саме.
 
 # Беремо .venv, якщо він є; інакше активне оточення (conda/venv); інакше системний python3.
 PY := $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; \
@@ -7,11 +7,12 @@ PY := $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; \
        else echo python3; fi)
 ROOT := $(shell pwd)
 
-.PHONY: help setup up down seed train run test config reset check doctor
+.PHONY: help setup up down seed train run test config config-write reset check doctor
 
 help:
 	@echo "make doctor  — перевірити, чи все готове до роботи"
 	@echo "make config  — показати налаштування для Claude Desktop"
+	@echo "make config-write — вписати їх автоматично"
 	@echo "make setup   — підняти свою базу в Docker і підготувати все з нуля"
 	@echo "make train   — натренувати модель ризику відтоку"
 	@echo "make run     — запустити сервер вручну, щоб побачити помилки"
@@ -64,6 +65,11 @@ doctor:
 # саме цього комп'ютера — щоб не писати їх руками й не помилятись.
 config:
 	@$(PY) scripts/print_config.py
+
+# Те саме, але вписує запис у файл сам, зберігши решту налаштувань
+# і зробивши резервну копію.
+config-write:
+	@$(PY) scripts/print_config.py --write
 
 reset:
 	@docker compose down -v
