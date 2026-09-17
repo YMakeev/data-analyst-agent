@@ -45,7 +45,18 @@ make config-write
 python3 -m json.tool ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 
-**4. Подивись логи Claude Desktop.** Там видно справжню причину:
+**4. Ти переносила теку проєкту після налаштування?**
+Тоді в налаштуваннях лишився старий шлях, а встановлений пакет указує в
+нікуди. Лікується двома командами з нового розташування:
+
+```bash
+pip install -e ".[dev]"
+make config-write
+```
+
+Ознака саме цієї причини в логах — `No module named 'server'`.
+
+**5. Подивись логи Claude Desktop.** Там видно справжню причину:
 
 ```bash
 # macOS
@@ -72,7 +83,7 @@ make run
 | Текст | Причина |
 |---|---|
 | `Не задано DATABASE_URL` | немає `.env` → `cp .env.example .env` |
-| `No module named 'server'` | запускаєш не з кореня проєкту, або не з того Python |
+| `No module named 'server'` | найчастіше — ти переносила теку проєкту в інше місце; полагодь командою `pip install -e ".[dev]"`, потім `make config-write` |
 | `No module named 'mcp'` | залежності не встановлені → `make setup` |
 | `connection refused` | база не піднята → `docker compose up -d` |
 

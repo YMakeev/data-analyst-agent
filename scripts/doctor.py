@@ -43,6 +43,19 @@ def main() -> int:
         check("Бібліотеки встановлені", False, str(exc),
               'виконай: pip install -e ".[dev]"')
 
+    # Claude Desktop запускає сервер з іншої теки, тому важливо, щоб код
+    # знаходився не лише «зсередини проєкту». Найчастіше це ламається після
+    # перенесення теки проєкту в інше місце.
+    import subprocess
+    found = subprocess.run(
+        [sys.executable, "-c", "import server, sys; print(server.__file__)"],
+        cwd=str(ROOT.parent), capture_output=True, text=True,
+    )
+    here = found.stdout.strip().startswith(str(ROOT))
+    check("Код видно ззовні теки проєкту", found.returncode == 0 and here,
+          "" if here else "проєкт, схоже, переносили в інше місце",
+          'перевстанови пакет: pip install -e ".[dev]"')
+
     env = ROOT / ".env"
     if not check("Файл .env існує", env.exists(), "",
                  "виконай: cp .env.example .env"):

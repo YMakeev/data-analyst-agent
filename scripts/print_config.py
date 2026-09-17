@@ -47,6 +47,12 @@ def server_block() -> dict:
         "command": interpreter(),
         "args": ["-m", "server.main"],
         "cwd": str(ROOT),
+        # PYTHONPATH дублює cwd навмисно. Claude Desktop запускає сервер як
+        # окрему програму, і покладатись лише на «поточну теку» ненадійно:
+        # варто перенести проєкт в іншу теку — і встановлений пакет починає
+        # вказувати в нікуди, а сервер падає з «No module named server».
+        # Явний шлях знімає цю залежність узагалі.
+        "env": {"PYTHONPATH": str(ROOT)},
     }
 
 
