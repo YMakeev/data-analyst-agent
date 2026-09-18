@@ -133,6 +133,17 @@ make doctor
 
 Команда перевірить усе одразу й скаже, що саме не так, якщо щось не так.
 
+Якщо `make` не знайдено — у Windows її зазвичай немає, — та сама перевірка
+запускається напряму:
+
+```bash
+python scripts/doctor.py
+```
+
+Так само й решта команд: `make config-write` це
+`python scripts/print_config.py --write`, `make train` це
+`python ml/train.py`. Повна таблиця відповідників — у README.
+
 ---
 
 ## Підключення до Claude
